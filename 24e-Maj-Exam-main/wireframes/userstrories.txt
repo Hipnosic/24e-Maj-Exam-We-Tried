@@ -1,0 +1,23 @@
+Logga in:
+Som en kund, vill jag kunna logga in så att jag kan beställa produkter. Den borde ha ett användarnamn- och lösenordsfält.
+
+Registrering:
+Som en kund, vill jag kunna registrera ett konto så att jag kan logga in, beställa produkter och spara information. Den borde ha ett användarnamn- och lösenordsfält.
+
+User view:
+Som en kund vill jag kunna se en lista av produkter, där jag kan ändra på hur många man beställer, med en beställningsknapp.
+
+Admin view - books:
+Som en admin, vill jag kunna se en lista av böcker, där jag kan ändra på detaljer om boken, eller lägga till nya böcker.
+
+Admin view - editing or adding a book:
+Som en admin, borde jag kunna lägga till eller ändra på detaljer om böckerna, jag borde kunna ändra på titel, författaren och kvantitet, sen spara eller kasta bort ändringarna.
+
+Guest view: 
+Som en kund, vill jag kunna se vilket utbud det finns, samt kunna se all info om produkterna. Jag vill även kunna söka efter olika produkter, samt ha alternativ till att registrear ett konta på hemsidan om det nu är så att jag vill beställa en vara.
+
+Admin view - users: 
+Jag som admin, vill ha en lista på alla användare och admins. Jag vill kunna se hur mycket produkter både användarna och admins beställt. Jag vill även se vilken roll alla har, som tex admin eller vanlig användare. Sedan vill jag även kunna ändra roll på alla användare genom att uppgradera de till admin eller ta bort deras konto. Söka bland alla användare.
+
+Admin view - Removing or promoting a users: 
+Jag som admin, vill få upp en pop-up när jag vill ändra status på en användare. pop-up ska komma med två allternativ, fortsätt eller avbryt.
