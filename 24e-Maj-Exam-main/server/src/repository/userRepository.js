@@ -20,7 +20,7 @@ const getUser = (username) => {
 }
 
 const getUsers = () => {
-  return getUserContext().users;
+  return getUserContext();
 }
 
 const addPurchase = (username, book) => {

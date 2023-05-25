@@ -25,7 +25,7 @@ const searchBooks = (query) => {
 }
 
 const getBooks = () => {
-  return getBookContext().books;
+  return getBookContext();
 }
 
 const addBook = (book) => {
