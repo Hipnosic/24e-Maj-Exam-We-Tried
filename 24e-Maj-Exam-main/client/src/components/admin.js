@@ -56,7 +56,10 @@ const Admin = () => {
                   <Button>-</Button>
                   <Button>Order</Button>
               </TableCell>
-              <TableCell align="left">{book.title}</TableCell>
+              <TableCell align="left">
+                  <Button>Edit</Button>
+                  <Button>Delete</Button>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
