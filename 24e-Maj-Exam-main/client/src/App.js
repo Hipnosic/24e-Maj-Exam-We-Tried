@@ -1,7 +1,7 @@
 import './App.css';
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import Home from "./pages/Home";
-import Blogs from './pages/Blogs';
+import Home from "./components/home";
+import Admin from './components/admin';
 
 function App() {
   return (
@@ -11,12 +11,12 @@ function App() {
                 <Link to="/">Home</Link>
               </li>
               <li>
-                <Link to="/blogs">Blogs</Link>
+                <Link to="/admin">Admin</Link>
               </li>
             </ul>
            <Routes>
                  <Route exact path='/' element={< Home />}></Route>
-                 <Route exact path='/blogs' element={< Blogs />}></Route>
+                 <Route exact path='/admin' element={< Admin />}></Route>
           </Routes>
     </BrowserRouter>
   );
