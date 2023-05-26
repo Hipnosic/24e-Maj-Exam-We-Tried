@@ -10,7 +10,7 @@ import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 
-const Home = () => {
+const Guest = () => {
   const [booksData, setBooksData] = useState(null);
   const [booksError, setBooksError] = useState("");
 
@@ -68,4 +68,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Guest;
