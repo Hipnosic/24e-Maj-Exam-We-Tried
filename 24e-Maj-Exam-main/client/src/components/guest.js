@@ -28,8 +28,6 @@ const Guest = () => {
     getData();
   }, []);
 
-  
-
   const DisplayTable = () => {
       return     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -61,7 +59,7 @@ const Guest = () => {
     <div>
       {booksError && <p>Error: {booksError}</p>}
       {booksData && <DisplayTable />}
-      <p>Booksters Website</p>
+      <p>Home</p>
       <TextField id="outlined-basic" label="Outlined" variant="outlined" />
       <Link to="/auth/login">
       <Button variant="contained">Login</Button>

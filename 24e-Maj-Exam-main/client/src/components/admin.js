@@ -56,7 +56,7 @@ const Admin = () => {
                   <Button>+</Button>
                   <Input></Input>
                   <Button>-</Button>
-                  <Button>Order</Button>
+                  <Button variant="contained">Order</Button>
               </TableCell>
               <TableCell align="left">
                   <Button>Edit</Button>
