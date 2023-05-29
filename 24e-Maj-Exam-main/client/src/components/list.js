@@ -9,23 +9,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 
-const List = () => {
-    const [booksData, setBooksData] = useState(null);
-    const [booksError, setBooksError] = useState("");
-  
-    const getData = async () => {
-      try {
-        const response = await axios.get("http://localhost:3000/library/books");
-        setBooksData(response.data);
-      } catch (error) {
-        setBooksError(error.message);
-      }
-    };
-  
-    useEffect(() => {
-      getData();
-    }, []);
-  
+const DisplayTable = (data) => {
     return (
       <div>
         <TableContainer component={Paper}>
@@ -57,5 +41,5 @@ const List = () => {
     );
   };
   
-  export default List;
+  export default DisplayTable;
   
