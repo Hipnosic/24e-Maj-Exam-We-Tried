@@ -12,7 +12,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import AuthService from '../../../service/authService';
+import AuthService from '../services/AuthService';
 
 function Copyright(props) {
   return (
@@ -35,13 +35,11 @@ export default function SignUp() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const register = () => {
-      let data = {
-        username: data.get('username'),
-        password: data.get('password')
-      }
-    };
-    AuthService.register(data).then(response => {
+    const Accountdata = {
+      username: data.get('username'),
+      password: data.get('password')
+    }
+    AuthService.register(Accountdata).then(response => {
       console.log(response.data)
       .catch(e => {
         console.error(e)
