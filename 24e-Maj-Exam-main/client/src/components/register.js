@@ -12,7 +12,11 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+<<<<<<< HEAD
 
+=======
+import AuthService from '../services/AuthService';
+>>>>>>> 8950ff9f4c3413c60a85dadd9284fe196a599d8d
 
 function Copyright(props) {
   return (
@@ -35,6 +39,7 @@ export default function SignUp() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+<<<<<<< HEAD
     const register = () => {
       let data = {
         username: data.get('username'),
@@ -47,6 +52,18 @@ export default function SignUp() {
     //     console.error(e)
     //   })
     // })
+=======
+    const Accountdata = {
+      username: data.get('username'),
+      password: data.get('password')
+    }
+    AuthService.register(Accountdata).then(response => {
+      console.log(response.data)
+      .catch(e => {
+        console.error(e)
+      })
+    })
+>>>>>>> 8950ff9f4c3413c60a85dadd9284fe196a599d8d
   };
 
   return (
