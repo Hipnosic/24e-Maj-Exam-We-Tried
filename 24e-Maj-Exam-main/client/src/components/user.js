@@ -56,12 +56,9 @@ const User = () => {
     <div>
       {booksError && <p>Error: {booksError}</p>}
       {booksData && <DisplayTable />}
-      <p>Home</p>
+      <p>Booksters Website</p>
       <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-
-      <Button variant="text">Text</Button>
-      <Button variant="contained">Contained</Button>
-      <Button variant="outlined">Outlined</Button>
+      <Button variant="outlined">Logout</Button>
     </div>
   );
 };
