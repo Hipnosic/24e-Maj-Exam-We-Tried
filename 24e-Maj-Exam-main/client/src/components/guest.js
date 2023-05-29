@@ -9,6 +9,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import List from "./list";
 
 const Guest = () => {
   const [booksData, setBooksData] = useState(null);
@@ -27,8 +28,17 @@ const Guest = () => {
     getData();
   }, []);
 
-  const DisplayTable = () => {
-      return     <TableContainer component={Paper}>
+  return (
+    <div>
+      {booksError && <p>Error: {booksError}</p>}
+      {booksData && <DisplayTable />}
+      <p>Booksters Website</p>
+      <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+
+      <Button variant="contained">Login</Button>
+      <Button variant="outlined">Signup</Button>
+
+      <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
@@ -52,19 +62,8 @@ const Guest = () => {
         </TableBody>
       </Table>
     </TableContainer>
-  }
-
-  return (
-    <div>
-      {booksError && <p>Error: {booksError}</p>}
-      {booksData && <DisplayTable />}
-      <p>Home</p>
-      <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-
-      <Button variant="text">Text</Button>
-      <Button variant="contained">Contained</Button>
-      <Button variant="outlined">Outlined</Button>
     </div>
+    
   );
 };
 
