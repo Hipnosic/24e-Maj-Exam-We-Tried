@@ -10,6 +10,8 @@ import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { Input } from "@mui/material";
+import ButtonGroup from '@mui/material/ButtonGroup';
+import { Link } from 'react-router-dom';
 
 const Admin = () => {
   const [booksData, setBooksData] = useState(null);
@@ -34,8 +36,8 @@ const Admin = () => {
         <TableHead>
           <TableRow>
             <TableCell>Author</TableCell>
-            <TableCell align="left">Quantity</TableCell>
             <TableCell align="left">Title</TableCell>
+            <TableCell align="left">Quantity</TableCell>
             <TableCell align="left">Order</TableCell>
             <TableCell align="left">Action</TableCell>
           </TableRow>
@@ -48,8 +50,8 @@ const Admin = () => {
               <TableCell component="th" scope="row">
                 {book.author}
               </TableCell>
-              <TableCell align="left">{book.quantity}</TableCell>
               <TableCell align="left">{book.title}</TableCell>
+              <TableCell align="left">{book.quantity}</TableCell>
               <TableCell align="left">
                   <Button>+</Button>
                   <Input></Input>
@@ -74,9 +76,17 @@ const Admin = () => {
       <p>Home</p>
       <TextField id="outlined-basic" label="Outlined" variant="outlined" />
 
-      <Button variant="text">Text</Button>
-      <Button variant="contained">Contained</Button>
-      <Button variant="outlined">Outlined</Button>
+      <ButtonGroup
+        disableElevation
+        variant="contained"
+        aria-label="Disabled elevation buttons"
+      >
+        <Button>Users</Button>
+        <Button>Books</Button>
+      </ButtonGroup>
+      <Link to="/">
+        <Button variant="outlined">Logout</Button>
+      </Link>
     </div>
   );
 };

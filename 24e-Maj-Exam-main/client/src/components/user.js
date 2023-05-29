@@ -9,6 +9,8 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import { Link } from 'react-router-dom';
+import { Input } from "@mui/material";
 
 const User = () => {
   const [booksData, setBooksData] = useState(null);
@@ -35,6 +37,7 @@ const User = () => {
             <TableCell align="left">Title</TableCell>
             <TableCell>Author</TableCell>
             <TableCell align="left">Quantity</TableCell>
+            <TableCell align="right">Order</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -45,6 +48,12 @@ const User = () => {
               <TableCell align="left">{book.title}</TableCell>
               <TableCell component="th" scope="row">{book.author}</TableCell>
               <TableCell align="left">{book.quantity}</TableCell>
+              <TableCell align="right">
+                  <Button>+</Button>
+                  <Input></Input>
+                  <Button>-</Button>
+                  <Button variant="contained">Order</Button>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
@@ -58,7 +67,10 @@ const User = () => {
       {booksData && <DisplayTable />}
       <p>Booksters Website</p>
       <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+      <Link to="/">
       <Button variant="outlined">Logout</Button>
+      </Link>
+      
     </div>
   );
 };

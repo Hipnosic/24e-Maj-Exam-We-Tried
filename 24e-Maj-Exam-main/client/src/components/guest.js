@@ -9,6 +9,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import { Link } from 'react-router-dom';
 
 const Guest = () => {
   const [booksData, setBooksData] = useState(null);
@@ -62,9 +63,10 @@ const Guest = () => {
       {booksData && <DisplayTable />}
       <p>Booksters Website</p>
       <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-
+      <Link to="/auth/login">
       <Button variant="contained">Login</Button>
-      <Button variant="outlined">Signup</Button>
+      </Link>
+      
     </div>
   );
 };

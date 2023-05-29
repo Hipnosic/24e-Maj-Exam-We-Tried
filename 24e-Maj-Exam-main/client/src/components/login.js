@@ -9,6 +9,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 
+
 const Login = () => {
       const handleSubmit = (event) => {
             event.preventDefault();
@@ -71,7 +72,7 @@ const Login = () => {
           </Button>
           <Grid container>
             <Grid item>
-              <Link href="#" variant="body2">
+                <Link href="/auth/register" variant="body2">
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>
