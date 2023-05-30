@@ -1,10 +1,8 @@
-import * as React from 'react';
+import { React, useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -35,24 +33,41 @@ const defaultTheme = createTheme();
 export default function SignUp() {
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const Accountdata = {
-      username: data.get('username'),
-      password: data.get('password')
+
+    const loginData = new FormData(event.currentTarget)
+    const userData = {
+      username: loginData.get("username"),
+      password: loginData.get("password"),
     }
-    AuthService.register(Accountdata).then(response => {
-      console.log(response.data)
-      .catch(e => {
-        console.error(e)
-      })
+
+    console.log('Successfully registered account, username: ', userData.username, " password: ", userData.password)
+
+    fetch('http://localhost:3000/auth/register', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(userData),
     })
-  };
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.message === undefined){
+        alert("Failed")
+      }
+      else{
+        alert(data.message)
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  }
 
   return (
     
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
-        <CssBaseline />
+        <CssBaseline /> 
         <Box
         sx={{
           boxShadow: 3,
