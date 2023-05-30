@@ -33,9 +33,14 @@ const Admin = () => {
   }, []);
 
   const DisplayTable = () => {
-      return <TableContainer component={Paper}>
+      return <TableContainer component={Paper}
+      style={{
+        backgroundColor: 'grey'
+      }}
+      >
           <Box
         sx={{
+          bgcolor: 'lightgray',
           boxShadow: 3,
           borderRadius: 2,
           // px: 50,
@@ -55,7 +60,7 @@ const Admin = () => {
         <h1>Booksters Website</h1>
         <p>Browsing as admin (username)</p>
         </Typography>
-      <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+      <TextField id="outlined-basic" label="Search" variant="outlined" />
       <ButtonGroup
         disableElevation
         variant="contained"
@@ -71,6 +76,7 @@ const Admin = () => {
 
       <Box
         sx={{
+          bgcolor: 'lightgray',
           boxShadow: 3,
           borderRadius: 2,
           // px: 50,

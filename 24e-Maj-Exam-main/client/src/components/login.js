@@ -48,6 +48,7 @@ const Login = () => {
     <Container component="main" maxWidth="sm">
       <Box
         sx={{
+          bgcolor:'lightgray',
           boxShadow: 3,
           borderRadius: 2,
           px: 4,

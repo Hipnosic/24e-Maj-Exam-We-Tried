@@ -32,9 +32,14 @@ const User = () => {
   }, []);
 
   const DisplayTable = () => {
-      return     <TableContainer component={Paper}>
+      return     <TableContainer component={Paper}
+      style={{
+        backgroundColor: 'grey'
+      }}
+      >
             <Box
         sx={{
+          bgcolor: 'lightgray',
           boxShadow: 3,
           borderRadius: 2,
           // px: 50,
@@ -55,7 +60,7 @@ const User = () => {
         <p>Browsing as user (username)</p>
         </Typography>
           
-      <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+      <TextField id="outlined-basic" label="Search" variant="outlined" />
       <Link to="/">
       <Button variant="outlined">Logout</Button>
       </Link>
@@ -63,6 +68,7 @@ const User = () => {
         
       <Box
         sx={{
+          bgcolor: 'lightgray',
           boxShadow: 3,
           borderRadius: 2,
           // px: 50,
