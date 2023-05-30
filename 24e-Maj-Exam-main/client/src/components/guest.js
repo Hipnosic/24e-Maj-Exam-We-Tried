@@ -10,6 +10,8 @@ import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { Link } from 'react-router-dom';
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 
 const Guest = () => {
   const [booksData, setBooksData] = useState(null);
@@ -30,12 +32,64 @@ const Guest = () => {
 
   const DisplayTable = () => {
       return     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <Box
+        sx={{
+          boxShadow: 3,
+          borderRadius: 2,
+          // px: 50,
+          py: 2,
+          marginTop: 2,
+          marginBottom: 4,
+          marginLeft: 6,
+          marginRight: 6,
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          // justifycontent: "space-between",
+        }}
+        
+      >
+        <p>Home</p>
+        <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+          <Link to="/auth/login">
+          <Button variant="contained">Login</Button>
+          </Link>
+      </Box>
+        
+      <Box
+        sx={{
+          boxShadow: 3,
+          borderRadius: 2,
+          // px: 50,
+          py: 2,
+          marginTop: 2,
+          // marginBottom: 4,
+          marginLeft: 6,
+          marginRight: 6,
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          // justifycontent: "space-between",
+        }}
+      >
+        <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Author</TableCell>
-            <TableCell align="left">Quantity</TableCell>
-            <TableCell align="left">Title</TableCell>
+            <TableCell>
+              <Typography component="h1" variant="h5">
+              Author
+              </Typography>
+            </TableCell>
+            <TableCell align="left">
+              <Typography component="h1" variant="h5">
+              Quantity
+             </Typography>
+            </TableCell>
+            <TableCell align="left">
+              <Typography component="h1" variant="h5">
+              Title
+              </Typography>
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -52,6 +106,7 @@ const Guest = () => {
           ))}
         </TableBody>
       </Table>
+      </Box>
     </TableContainer>
   }
 
@@ -59,12 +114,6 @@ const Guest = () => {
     <div>
       {booksError && <p>Error: {booksError}</p>}
       {booksData && <DisplayTable />}
-      <p>Home</p>
-      <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-      <Link to="/auth/login">
-      <Button variant="contained">Login</Button>
-      </Link>
-      
     </div>
   );
 };

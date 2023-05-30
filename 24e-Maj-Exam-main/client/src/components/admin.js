@@ -12,6 +12,8 @@ import TextField from '@mui/material/TextField';
 import { Input } from "@mui/material";
 import ButtonGroup from '@mui/material/ButtonGroup';
 import { Link } from 'react-router-dom';
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 
 const Admin = () => {
   const [booksData, setBooksData] = useState(null);
@@ -32,14 +34,83 @@ const Admin = () => {
 
   const DisplayTable = () => {
       return <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <Box
+        sx={{
+          boxShadow: 3,
+          borderRadius: 2,
+          // px: 50,
+          py: 2,
+          marginTop: 2,
+          marginBottom: 4,
+          marginLeft: 6,
+          marginRight: 6,
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          // justifycontent: "space-between",
+        }}
+        
+      >
+        <p>Home</p>
+      <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+      <ButtonGroup
+        disableElevation
+        variant="contained"
+        aria-label="Disabled elevation buttons"
+      >
+        <Button>Users</Button>
+        <Button>Books</Button>
+      </ButtonGroup>
+      <Link to="/">
+        <Button variant="outlined">Logout</Button>
+      </Link>
+      </Box>
+
+      <Box
+        sx={{
+          boxShadow: 3,
+          borderRadius: 2,
+          // px: 50,
+          py: 2,
+          marginTop: 2,
+          marginBottom: 4,
+          marginLeft: 6,
+          marginRight: 6,
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          // justifycontent: "space-between",
+        }}
+        
+      >
+        <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Author</TableCell>
-            <TableCell align="left">Title</TableCell>
-            <TableCell align="left">Quantity</TableCell>
-            <TableCell align="left">Order</TableCell>
-            <TableCell align="left">Action</TableCell>
+            <TableCell>
+              <Typography component="h1" variant="h5">
+              Author
+              </Typography>
+            </TableCell>
+            <TableCell align="left">
+              <Typography component="h1" variant="h5">
+                Title
+              </Typography>
+            </TableCell>
+            <TableCell align="left">
+              <Typography component="h1" variant="h5">
+                Quantity
+              </Typography>
+            </TableCell>
+            <TableCell align="left">
+              <Typography component="h1" variant="h5">
+              Order
+              </Typography>
+            </TableCell>
+            <TableCell align="left">
+              <Typography component="h1" variant="h5">
+              Action
+              </Typography>
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -66,6 +137,7 @@ const Admin = () => {
           ))}
         </TableBody>
       </Table>
+      </Box>
     </TableContainer>
   }
 
@@ -73,20 +145,6 @@ const Admin = () => {
     <div>
       {booksError && <p>Error: {booksError}</p>}
       {booksData && <DisplayTable />}
-      <p>Home</p>
-      <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-
-      <ButtonGroup
-        disableElevation
-        variant="contained"
-        aria-label="Disabled elevation buttons"
-      >
-        <Button>Users</Button>
-        <Button>Books</Button>
-      </ButtonGroup>
-      <Link to="/">
-        <Button variant="outlined">Logout</Button>
-      </Link>
     </div>
   );
 };
