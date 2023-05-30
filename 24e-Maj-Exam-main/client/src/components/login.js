@@ -56,6 +56,7 @@ const Login = () => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          bgcolor: "white",
         }}
       >
         <Typography component="h1" variant="h5">
@@ -93,6 +94,14 @@ const Login = () => {
             sx={{ mt: 3, mb: 2 }}
           >
             Sign In
+          </Button>
+
+          <Button
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}>
+              Proceed as a guest
+              <Link to="/"></Link>
           </Button>
           <Grid container>
             <Grid item>
