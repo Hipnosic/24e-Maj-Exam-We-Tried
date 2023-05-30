@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -11,14 +11,38 @@ import Container from "@mui/material/Container";
 
 
 const Login = () => {
-      const handleSubmit = (event) => {
-            event.preventDefault();
-            const data = new FormData(event.currentTarget);
-            console.log({
-              username: data.get("username"),
-              password: data.get("password"),
-            });
-  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const loginData = new FormData(event.currentTarget)
+    const userData = {
+      username: loginData.get("username"),
+      password: loginData.get("password"),
+    }
+
+    console.log('Successfully logged in, username: ', userData.username, " password: ", userData.password)
+
+    fetch('http://localhost:3000/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(userData),
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.message === undefined){
+        alert("Failed")
+      }
+      else{
+        alert(data.message)
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  }
+
 
   return (
     <Container component="main" maxWidth="sm">
