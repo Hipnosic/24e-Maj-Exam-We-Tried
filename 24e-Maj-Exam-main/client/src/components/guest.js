@@ -1,3 +1,4 @@
+import '../App.css';
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Table from '@mui/material/Table';
@@ -49,7 +50,10 @@ const Guest = () => {
         }}
         
       >
-        <p>Home</p>
+        <Typography component="h1" variant="h5">
+        <h1>Booksters Website</h1>
+        <p>Browsing as guest</p>
+        </Typography>
         <TextField id="outlined-basic" label="Outlined" variant="outlined" />
           <Link to="/auth/login">
           <Button variant="contained">Login</Button>

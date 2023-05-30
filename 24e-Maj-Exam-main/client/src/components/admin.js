@@ -51,7 +51,10 @@ const Admin = () => {
         }}
         
       >
-        <p>Home</p>
+        <Typography component="h1" variant="h5">
+        <h1>Booksters Website</h1>
+        <p>Browsing as admin (username)</p>
+        </Typography>
       <TextField id="outlined-basic" label="Outlined" variant="outlined" />
       <ButtonGroup
         disableElevation

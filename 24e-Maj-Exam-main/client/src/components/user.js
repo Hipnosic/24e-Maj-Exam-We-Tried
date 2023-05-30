@@ -50,7 +50,11 @@ const User = () => {
         }}
         
       >
-          <p>Booksters Website</p>
+        <Typography component="h1" variant="h5">
+        <h1>Booksters Website</h1>
+        <p>Browsing as user (username)</p>
+        </Typography>
+          
       <TextField id="outlined-basic" label="Outlined" variant="outlined" />
       <Link to="/">
       <Button variant="outlined">Logout</Button>
