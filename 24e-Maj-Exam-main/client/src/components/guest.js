@@ -1,4 +1,3 @@
-import '../App.css';
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Table from '@mui/material/Table';
@@ -32,9 +31,14 @@ const Guest = () => {
   }, []);
 
   const DisplayTable = () => {
-      return     <TableContainer component={Paper}>
+      return     <TableContainer component={Paper}
+      style={{
+        backgroundColor: 'grey'
+      }}
+      >
         <Box
         sx={{
+          bgcolor: 'lightgrey',
           boxShadow: 3,
           borderRadius: 2,
           // px: 50,
@@ -62,6 +66,7 @@ const Guest = () => {
         
       <Box
         sx={{
+          bgcolor: 'lightgrey',
           boxShadow: 3,
           borderRadius: 2,
           // px: 50,
