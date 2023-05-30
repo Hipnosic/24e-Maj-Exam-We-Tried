@@ -12,7 +12,7 @@ function authenticate(userDetails) {
     throw error;
   }
   
-  return jwtUtil.generate({username: user.username, role: user.role});
+  return {accessToken: jwtUtil.generate({username: user.username, role: user.role}), role: user.role};
 }
 
 function register(userDetails) {
@@ -23,6 +23,8 @@ function register(userDetails) {
     error.name = "UserAlreadyExistException";
     throw error;
   }
+
+  console.log(user);
 
   return userRepository.addUser({...userDetails, role: "USER"});
 }

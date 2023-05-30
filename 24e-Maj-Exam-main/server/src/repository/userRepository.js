@@ -32,6 +32,7 @@ const addPurchase = (username, book) => {
   
   const ctx = getUserContext();
   ctx.version = crypto.randomUUID();
+  console.log("ctx: ", ctx);
   return ctx;
 }
 

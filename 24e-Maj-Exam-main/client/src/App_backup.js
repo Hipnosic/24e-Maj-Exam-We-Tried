@@ -6,13 +6,27 @@ import Login from './components/login';
 import Signup from './components/register'
 import User from './components/user';
 import Home from './views/Home';
-import LayoutContainer from './components/LayoutContainer';
 
 function App() {
-
   return (
-    <LayoutContainer>
       <BrowserRouter>
+            <ul className="list">
+              <li>
+                <Link to="/">Guest</Link>
+              </li>
+              <li>
+                <Link to="/admin">Admin</Link>
+              </li>
+              <li>
+                <Link to="/auth/login">Login</Link>
+              </li>
+              <li>
+                <Link to="/auth/register">Register</Link>
+              </li>
+              <li>
+                <Link to="/user">User</Link>
+              </li>
+            </ul>
            <Routes>
                  {/*<Route exact path='/' element={< Guest />}></Route>*/}
                  <Route exact path='/' element={<Home />}></Route>
@@ -21,8 +35,7 @@ function App() {
                  <Route exact path='/auth/register' element={< Signup />}></Route>
                  <Route ezact path='/user' element={< User />}></Route>
           </Routes>
-      </BrowserRouter>
-    </LayoutContainer>
+    </BrowserRouter>
   );
 }
 
