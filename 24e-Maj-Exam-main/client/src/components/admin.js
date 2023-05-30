@@ -33,9 +33,14 @@ const Admin = () => {
   }, []);
 
   const DisplayTable = () => {
-      return <TableContainer component={Paper}>
+      return <TableContainer component={Paper}
+      style={{
+        backgroundColor: 'grey'
+      }}
+      >
           <Box
         sx={{
+          bgcolor: 'lightgray',
           boxShadow: 3,
           borderRadius: 2,
           // px: 50,
@@ -71,6 +76,7 @@ const Admin = () => {
 
       <Box
         sx={{
+          bgcolor: 'lightgray',
           boxShadow: 3,
           borderRadius: 2,
           // px: 50,

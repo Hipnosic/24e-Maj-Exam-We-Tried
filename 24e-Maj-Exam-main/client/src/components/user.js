@@ -32,9 +32,14 @@ const User = () => {
   }, []);
 
   const DisplayTable = () => {
-      return     <TableContainer component={Paper}>
+      return     <TableContainer component={Paper}
+      style={{
+        backgroundColor: 'grey'
+      }}
+      >
             <Box
         sx={{
+          bgcolor: 'lightgray',
           boxShadow: 3,
           borderRadius: 2,
           // px: 50,
@@ -63,6 +68,7 @@ const User = () => {
         
       <Box
         sx={{
+          bgcolor: 'lightgray',
           boxShadow: 3,
           borderRadius: 2,
           // px: 50,
