@@ -60,7 +60,7 @@ const Admin = () => {
         <h1>Booksters Website</h1>
         <p>Browsing as admin (username)</p>
         </Typography>
-      <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+      <TextField id="outlined-basic" label="Search" variant="outlined" />
       <ButtonGroup
         disableElevation
         variant="contained"

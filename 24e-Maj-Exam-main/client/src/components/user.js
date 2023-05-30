@@ -60,7 +60,7 @@ const User = () => {
         <p>Browsing as user (username)</p>
         </Typography>
           
-      <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+      <TextField id="outlined-basic" label="Search" variant="outlined" />
       <Link to="/">
       <Button variant="outlined">Logout</Button>
       </Link>

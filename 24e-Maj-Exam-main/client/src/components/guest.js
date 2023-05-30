@@ -58,7 +58,7 @@ const Guest = () => {
         <h1>Booksters Website</h1>
         <p>Browsing as guest</p>
         </Typography>
-        <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+        <TextField id="outlined-basic" label="Search" variant="outlined" />
           <Link to="/auth/login">
           <Button variant="contained">Login</Button>
           </Link>
