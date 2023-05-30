@@ -34,7 +34,7 @@ const User = () => {
   const DisplayTable = () => {
       return     <TableContainer component={Paper}
       style={{
-        backgroundColor: 'grey'
+        backgroundColor: 'white'
       }}
       >
             <Box

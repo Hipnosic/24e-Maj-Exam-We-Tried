@@ -65,11 +65,16 @@ export default function SignUp() {
 
   return (
     
-    <ThemeProvider theme={defaultTheme}>
+    <ThemeProvider theme={defaultTheme}
+    style={{
+      backgroundColor: 'grey'
+    }}
+    >
       <Container component="main" maxWidth="xs">
         <CssBaseline /> 
         <Box
         sx={{
+          bgcolor:'lightgray',
           boxShadow: 3,
           borderRadius: 2,
           px: 4,
