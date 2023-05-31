@@ -20,6 +20,10 @@ const BooksTable = ({ loggedInAsUser, loggedInAsAdmin }) => {
   const [booksData, setBooksData] = useState(null);
   const [booksError, setBooksError] = useState("");
 
+  function handleOrder() {
+    alert("You have been scammed")
+  }
+
   const getData = async () => {
     try {
       const response = await axios.get("http://localhost:3000/library/books");

@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 import { Button, ButtonGroup } from "@mui/material";
+import FormDialog from "./orderDialog"
 
 const GroupedButtons = () => {
   const [counter, setCounter] = useState(0);
-
-  const handleOrder = async () => {
-    console.log("order: ", counter);
-  };
 
   const handleDecrement = () => {
     setCounter((prevCounter) => prevCounter - 1);
@@ -25,7 +22,7 @@ const GroupedButtons = () => {
         {displayCounter && <Button disabled>{counter}</Button>}
         <Button onClick={handleIncrement}>+</Button>
       </ButtonGroup>
-      <Button onClick={handleOrder}>Order</Button>
+      <FormDialog></FormDialog>
     </>
   );
 };
