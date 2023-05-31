@@ -1,10 +1,10 @@
 import './App.css';
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import Guest from "./components/guest";
-import Admin from './components/admin';
-import Login from './components/login';
-import Signup from './components/register'
-import User from './components/user';
+import Guest from "./views/guest";
+import Admin from './views/admin';
+import Login from './views/login';
+import Signup from './views/register'
+import User from './views/user';
 import Home from './views/Home';
 import LayoutContainer from './components/LayoutContainer';
 

@@ -29,7 +29,7 @@ export default function FormDialog() {
         Order
       </Button>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Subscribe</DialogTitle>
+        <DialogTitle>Order Product</DialogTitle>
         <DialogContent>
           <DialogContentText>
             To order the product, you will need to enter your information and credit card.
