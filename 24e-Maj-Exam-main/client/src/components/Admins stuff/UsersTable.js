@@ -38,8 +38,27 @@ const UsersTable = () => {
     }
   };
 
-  const handlePromote = async () => {
-    console.log("promote");
+  const handlePromote = async (user) => {
+
+    fetch('http://localhost:3000/admin/users', {
+      method: 'PUT',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(user)
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.message === undefined){
+        alert("Failed")
+      }
+      else{
+        alert(data.message)
+      }
+    })
+    .catch((error) => {
+      console.error(error)
+    })
   };
 
   const handleDelete = async () => {
@@ -129,7 +148,7 @@ const UsersTable = () => {
                   <TableCell align="left">{user.role}</TableCell>
                   <TableCell align="left">1</TableCell>
                   <TableCell align="left">
-                    <Button onClick={handlePromote}>Promote</Button>
+                    <Button onClick={() => handlePromote(user)}>Promote</Button>
                     <Button onClick={handleDelete}>Delete</Button>
                   </TableCell>
                 </TableRow>

@@ -25,6 +25,8 @@ export default function SignUp() {
 
     console.log('Successfully registered account, username: ', userData.username, " password: ", userData.password)
 
+    console.log(userData)
+
     fetch('http://localhost:3000/auth/register', {
       method: 'POST',
       headers: {
