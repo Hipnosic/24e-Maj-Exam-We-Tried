@@ -12,7 +12,7 @@ import TextField from "@mui/material/TextField";
 import { Link } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-// import GroupedButtons from "./Books/GroupedButtons";  
+// import GroupedButtons from "./Books/GroupedButtons";
 
 const UsersTable = () => {
   const userData = JSON.parse(sessionStorage.getItem("userData"));
@@ -39,26 +39,24 @@ const UsersTable = () => {
   };
 
   const handlePromote = async (user) => {
-
-    fetch('http://localhost:3000/admin/users', {
-      method: 'PUT',
+    fetch("http://localhost:3000/admin/users", {
+      method: "PUT",
       headers: {
-        'Content-type': 'application/json',
+        "Content-type": "application/json",
       },
-      body: JSON.stringify(user)
+      body: JSON.stringify(user),
     })
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.message === undefined){
-        alert("Failed")
-      }
-      else{
-        alert(data.message)
-      }
-    })
-    .catch((error) => {
-      console.error(error)
-    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.message === undefined) {
+          alert("Failed");
+        } else {
+          alert(data.message);
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   const handleDelete = async () => {
