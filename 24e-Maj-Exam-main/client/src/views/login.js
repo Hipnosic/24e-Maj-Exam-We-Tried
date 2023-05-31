@@ -84,6 +84,7 @@ const Login = () => {
             name="username"
             autoComplete="username"
             autoFocus
+            inputProps={{ "data-testid": "username-input" }}
           />
           <TextField
             margin="normal"
@@ -94,6 +95,7 @@ const Login = () => {
             type="password"
             id="password"
             autoComplete="current-password"
+            inputProps={{ "data-testid": "password-input" }}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}

@@ -38,13 +38,14 @@ const UsersTable = () => {
     }
   };
 
-  const handlePromote = async (user) => {
+  const handlePromote = async (username) => {
+    const data = JSON.stringify({username})
     fetch("http://localhost:3000/admin/users", {
       method: "PUT",
       headers: {
         "Content-type": "application/json",
       },
-      body: JSON.stringify(user),
+      body: data
     })
       .then((response) => response.json())
       .then((data) => {
@@ -146,7 +147,7 @@ const UsersTable = () => {
                   <TableCell align="left">{user.role}</TableCell>
                   <TableCell align="left">1</TableCell>
                   <TableCell align="left">
-                    <Button onClick={() => handlePromote(user)}>Promote</Button>
+                    <Button onClick={() => handlePromote(user.username)}>Promote</Button>
                     <Button onClick={handleDelete}>Delete</Button>
                   </TableCell>
                 </TableRow>
