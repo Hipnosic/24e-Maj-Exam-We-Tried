@@ -44,12 +44,12 @@ const UsersTable = () => {
       method: "PUT",
       headers: {
         "Content-type": "application/json",
-        Authorization: "Bearer " + userData.token,
+        "authorization": userData.token
       },
       body: data
     })
       .then((response) => response.json())
-      .then((data) => {
+      .then((data) => { 
         if (data.message === undefined) {
           alert("Failed");
         } else {
@@ -61,8 +61,28 @@ const UsersTable = () => {
       });
   };
 
-  const handleDelete = async () => {
-    console.log("delete");
+  const handleDelete = async (username) => {
+    const data = JSON.stringify({username})
+
+    fetch("http://localhost:3000/admin/users", {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json",
+        "authorization": userData.token
+      },
+      body: data
+    })
+      .then((response) => response.json())
+      .then((data) => { 
+        if (data.message === undefined) {
+          alert("Failed");
+        } else {
+          alert(data.message);
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   useEffect(() => {
@@ -149,7 +169,7 @@ const UsersTable = () => {
                   <TableCell align="left">1</TableCell>
                   <TableCell align="left">
                     <Button onClick={() => handlePromote(user.username)}>Promote</Button>
-                    <Button onClick={handleDelete}>Delete</Button>
+                    <Button onClick={() => handleDelete(user.username)}>Delete</Button>
                   </TableCell>
                 </TableRow>
               ))}
