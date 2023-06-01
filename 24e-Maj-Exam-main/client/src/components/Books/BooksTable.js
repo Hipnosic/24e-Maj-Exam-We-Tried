@@ -55,7 +55,8 @@ const BooksTable = ({ loggedInAsUser, loggedInAsAdmin }) => {
   };
 
   const handleDelete = async (book) => {
-    const data = JSON.stringify({ book });
+    const data = JSON.stringify({ title: book });
+    console.log(data);
 
     fetch("http://localhost:3000/admin/books", {
       method: "DELETE",
@@ -70,7 +71,7 @@ const BooksTable = ({ loggedInAsUser, loggedInAsAdmin }) => {
         if (data.message === undefined) {
           alert("Failed");
         } else {
-          alert(data.message);
+          window.location.reload(false);
         }
       })
       .catch((error) => {
@@ -163,7 +164,7 @@ const BooksTable = ({ loggedInAsUser, loggedInAsAdmin }) => {
             </TableHead>
             <TableBody>
               {booksData.map((book) => (
-                <TableRow key={book.author}>
+                <TableRow key={book.author} disabled={true}>
                   <TableCell component="th" scope="row">
                     {book.author}
                   </TableCell>
@@ -178,8 +179,8 @@ const BooksTable = ({ loggedInAsUser, loggedInAsAdmin }) => {
                     <TableCell align="left">
                       <Button onClick={handleEdit}>Edit</Button>
                       <Button onClick={() => handleDelete(book.title)}>
-                      Delete
-                    </Button>
+                        Delete
+                      </Button>
                     </TableCell>
                   )}
                 </TableRow>

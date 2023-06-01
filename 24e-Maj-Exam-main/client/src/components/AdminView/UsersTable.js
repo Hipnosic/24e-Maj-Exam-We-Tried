@@ -77,14 +77,14 @@ const UsersTable = () => {
         if (data.message === undefined) {
           alert("Failed");
         } else {
-          alert(data.message);
+          window.location.reload(false);
         }
       })
       .catch((error) => {
         console.error(error);
       });
   };
-  
+
   useEffect(() => {
     getData();
   }, []);
@@ -164,14 +164,21 @@ const UsersTable = () => {
                 <TableRow key={user.username}>
                   <TableCell component="th" scope="row">
                     {user.username}
+                    {user.username === userData.name && " (Logged in user)"}
                   </TableCell>
                   <TableCell align="left">{user.role}</TableCell>
                   <TableCell align="left">1</TableCell>
                   <TableCell align="left">
-                    <Button onClick={() => handlePromote(user.username)}>
+                    <Button
+                      disabled={user.username === userData.name}
+                      onClick={() => handlePromote(user.username)}
+                    >
                       Promote
                     </Button>
-                    <Button onClick={() => handleDelete(user.username)}>
+                    <Button
+                      disabled={user.username === userData.name}
+                      onClick={() => handleDelete(user.username)}
+                    >
                       Delete
                     </Button>
                   </TableCell>
