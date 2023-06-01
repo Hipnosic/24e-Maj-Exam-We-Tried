@@ -84,8 +84,7 @@ const UsersTable = () => {
         console.error(error);
       });
   };
-  ("");
-
+  
   useEffect(() => {
     getData();
   }, []);

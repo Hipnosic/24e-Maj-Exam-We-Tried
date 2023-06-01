@@ -1,8 +1,8 @@
-// import {admin} from './http-common';
+const promoteUser = (data, token) => {
+    const headers = {
+        "Content-type": "application/json",
+        "authorization": token,
+    }
+}
 
-// getAllUsers(token) {
-//     const headers = {
-//         "Content-type": "application/json",
-//         "authorization": `${token.accessToken}`
-//     }
-// }
+export default promoteUser

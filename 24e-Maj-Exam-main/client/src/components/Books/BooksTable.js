@@ -24,7 +24,7 @@ const BooksTable = ({ loggedInAsUser, loggedInAsAdmin }) => {
   const getData = async () => {
     try {
       const response = await axios.get("http://localhost:3000/library/books");
-      setBooksData(response.data);
+      setBooksData(response.data.books);
     } catch (error) {
       setBooksError(error.message);
     }
@@ -39,7 +39,7 @@ const BooksTable = ({ loggedInAsUser, loggedInAsAdmin }) => {
         "Content-type": "application/json",
         authorization: userData.token,
       },
-      body: book,
+      body: data,
     })
       .then((response) => response.json())
       .then((data) => {
@@ -162,7 +162,7 @@ const BooksTable = ({ loggedInAsUser, loggedInAsAdmin }) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {booksData.books.map((book) => (
+              {booksData.map((book) => (
                 <TableRow key={book.author}>
                   <TableCell component="th" scope="row">
                     {book.author}
@@ -178,8 +178,8 @@ const BooksTable = ({ loggedInAsUser, loggedInAsAdmin }) => {
                     <TableCell align="left">
                       <Button onClick={handleEdit}>Edit</Button>
                       <Button onClick={() => handleDelete(book.title)}>
-                        Delete
-                      </Button>
+                      Delete
+                    </Button>
                     </TableCell>
                   )}
                 </TableRow>
