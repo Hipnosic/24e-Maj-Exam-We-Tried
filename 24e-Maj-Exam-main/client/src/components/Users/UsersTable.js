@@ -12,6 +12,7 @@ import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 // import GroupedButtons from "./Books/GroupedButtons";
+import promoteUser from "../../services/AdminService"
 
 const UsersTable = () => {
   const userData = JSON.parse(sessionStorage.getItem("userData"));
@@ -39,26 +40,27 @@ const UsersTable = () => {
 
   const handlePromote = async (username) => {
     const data = JSON.stringify({ username });
+    promoteUser(data, userData.token)
 
-    fetch("http://localhost:3000/admin/users", {
-      method: "PUT",
-      headers: {
-        "Content-type": "application/json",
-        authorization: userData.token,
-      },
-      body: data,
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.message === undefined) {
-          alert("Failed");
-        } else {
-          alert(data.message);
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    // fetch("http://localhost:3000/admin/users", {
+    //   method: "PUT",
+    //   headers: {
+    //     "Content-type": "application/json",
+    //     authorization: userData.token,
+    //   },
+    //   body: data,
+    //   })
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     if (data.message === undefined) {
+    //       alert("Failed");
+    //     } else {
+    //       alert(data.message);
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //   });
   };
 
   const handleDelete = async (username) => {
