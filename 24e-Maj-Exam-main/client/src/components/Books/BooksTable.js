@@ -12,9 +12,11 @@ import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import GroupedButtons from "./GroupedButtons";
+import UsersTable from "../AdminView/UsersTable";
 
 const BooksTable = ({ loggedInAsUser, loggedInAsAdmin }) => {
   console.log("loggedInAsUser: ", loggedInAsUser);
+  const userData = JSON.parse(sessionStorage.getItem("userData"));
 
   const [booksData, setBooksData] = useState(null);
   const [booksError, setBooksError] = useState("");
@@ -28,12 +30,52 @@ const BooksTable = ({ loggedInAsUser, loggedInAsAdmin }) => {
     }
   };
 
-  const handleEdit = async () => {
-    console.log("edit");
+  const handleEdit = async (book) => {
+    const data = JSON.stringify({ book });
+
+    fetch("http://localhost:3000/library/books", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+        authorization: userData.token,
+      },
+      body: book,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.message === undefined) {
+          alert("Failed");
+        } else {
+          alert(data.message);
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
-  const handleDelete = async () => {
-    console.log("delete");
+  const handleDelete = async (book) => {
+    const data = JSON.stringify({ book });
+
+    fetch("http://localhost:3000/admin/books", {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json",
+        authorization: userData.token,
+      },
+      body: data,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.message === undefined) {
+          alert("Failed");
+        } else {
+          alert(data.message);
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   useEffect(() => {
@@ -135,7 +177,9 @@ const BooksTable = ({ loggedInAsUser, loggedInAsAdmin }) => {
                   {loggedInAsAdmin && (
                     <TableCell align="left">
                       <Button onClick={handleEdit}>Edit</Button>
-                      <Button onClick={handleDelete}>Delete</Button>
+                      <Button onClick={() => handleDelete(book.title)}>
+                        Delete
+                      </Button>
                     </TableCell>
                   )}
                 </TableRow>
