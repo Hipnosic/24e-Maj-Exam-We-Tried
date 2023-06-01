@@ -47,7 +47,7 @@ const UsersTable = () => {
         authorization: userData.token,
       },
       body: data,
-    })
+      })
       .then((response) => response.json())
       .then((data) => {
         if (data.message === undefined) {
