@@ -39,7 +39,7 @@ const BooksTable = ({ loggedInAsUser, loggedInAsAdmin }) => {
         "Content-type": "application/json",
         authorization: userData.token,
       },
-      body: book,
+      body: data,
     })
       .then((response) => response.json())
       .then((data) => {
