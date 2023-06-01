@@ -11,25 +11,54 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import GroupedButtons from "./GroupedButtons";
+// import GroupedButtons from "./Books/GroupedButtons";
 
-const BooksTable = ({ loggedInAsUser, loggedInAsAdmin }) => {
-  console.log("loggedInAsUser: ", loggedInAsUser);
+const UsersTable = () => {
+  const userData = JSON.parse(sessionStorage.getItem("userData"));
 
-  const [booksData, setBooksData] = useState(null);
-  const [booksError, setBooksError] = useState("");
+  const [usersData, setUsersData] = useState(null);
+  const [usersError, setUsersError] = useState("");
 
+  // TODO:  Token ska hämtas dynamiskt från userData
   const getData = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/library/books");
-      setBooksData(response.data);
+      const config = {
+        headers: {
+          Authorization: "Bearer " + userData.token,
+        },
+      };
+      const response = await axios.get(
+        "http://localhost:3000/admin/users",
+        config
+      );
+      setUsersData(response.data.users);
     } catch (error) {
-      setBooksError(error.message);
+      setUsersError(error.message);
     }
   };
 
-  const handleEdit = async () => {
-    console.log("edit");
+  const handlePromote = async (username) => {
+    const data = JSON.stringify({username})
+
+    fetch("http://localhost:3000/admin/users", {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: "Bearer " + userData.token,
+      },
+      body: data
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.message === undefined) {
+          alert("Failed");
+        } else {
+          alert(data.message);
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   const handleDelete = async () => {
@@ -90,54 +119,38 @@ const BooksTable = ({ loggedInAsUser, loggedInAsAdmin }) => {
               <TableRow>
                 <TableCell>
                   <Typography component="h1" variant="h5">
-                    Author
+                    Username
                   </Typography>
                 </TableCell>
                 <TableCell align="left">
                   <Typography component="h1" variant="h5">
-                    Quantity
+                    Role
                   </Typography>
                 </TableCell>
                 <TableCell align="left">
                   <Typography component="h1" variant="h5">
-                    Title
+                    Purchases
                   </Typography>
                 </TableCell>
-                {(loggedInAsUser || loggedInAsAdmin) && (
-                  <TableCell align="left">
-                    <Typography component="h1" variant="h5">
-                      Order
-                    </Typography>
-                  </TableCell>
-                )}
-                {loggedInAsAdmin && (
-                  <TableCell align="left">
-                    <Typography component="h1" variant="h5">
-                      Action
-                    </Typography>
-                  </TableCell>
-                )}
+                <TableCell align="left">
+                  <Typography component="h1" variant="h5">
+                    Action
+                  </Typography>
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {booksData.books.map((book) => (
-                <TableRow key={book.author}>
+              {usersData.map((user) => (
+                <TableRow key={user.username}>
                   <TableCell component="th" scope="row">
-                    {book.author}
+                    {user.username}
                   </TableCell>
-                  <TableCell align="left">{book.quantity}</TableCell>
-                  <TableCell align="left">{book.title}</TableCell>
-                  {(loggedInAsUser || loggedInAsAdmin) && (
-                    <TableCell align="left">
-                      <GroupedButtons />
-                    </TableCell>
-                  )}
-                  {loggedInAsAdmin && (
-                    <TableCell align="left">
-                      <Button onClick={handleEdit}>Edit</Button>
-                      <Button onClick={handleDelete}>Delete</Button>
-                    </TableCell>
-                  )}
+                  <TableCell align="left">{user.role}</TableCell>
+                  <TableCell align="left">1</TableCell>
+                  <TableCell align="left">
+                    <Button onClick={() => handlePromote(user.username)}>Promote</Button>
+                    <Button onClick={handleDelete}>Delete</Button>
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -149,10 +162,10 @@ const BooksTable = ({ loggedInAsUser, loggedInAsAdmin }) => {
 
   return (
     <div>
-      {booksError && <p>Error: {booksError}</p>}
-      {booksData && <DisplayTable />}
+      {usersError && <p>Error: {usersError}</p>}
+      {usersData && <DisplayTable />}
     </div>
   );
 };
 
-export default BooksTable;
+export default UsersTable;
