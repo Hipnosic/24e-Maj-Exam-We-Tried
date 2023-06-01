@@ -15,7 +15,7 @@ const Header = () => {
       <header className="header">
         <Container className="header__container">
           <div className="logo">
-            <span>Bookster</span>
+            <span>Bookster website</span>
           </div>
           <div className="user-status__container">
             <span>Browsing as {userData ? userData.role : "Guest"}</span>

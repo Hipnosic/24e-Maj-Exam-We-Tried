@@ -10,3 +10,12 @@ test("should render the sign in button", () => {
   const signInButton = getByText("Sign in");
   expect(signInButton).toBeInTheDocument();
 });
+
+//Renders an anchor (<a>) tag with an href attribute pointing to "/auth/login". Clicking on this link will navigate to the specified URL, triggering a page reload.
+describe("Header", () => {
+  it("renders the sign-in button", () => {
+    const { getByText } = render(<Header />);
+    const signInButton = getByText("Sign in");
+    expect(signInButton).toBeInTheDocument();
+  });
+});
