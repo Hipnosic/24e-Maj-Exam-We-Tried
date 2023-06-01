@@ -38,18 +38,18 @@ const UsersTable = () => {
   };
 
   const handlePromote = async (username) => {
-    const data = JSON.stringify({username})
+    const data = JSON.stringify({ username });
 
     fetch("http://localhost:3000/admin/users", {
       method: "PUT",
       headers: {
         "Content-type": "application/json",
-        "authorization": userData.token
+        authorization: userData.token,
       },
-      body: data
+      body: data,
     })
       .then((response) => response.json())
-      .then((data) => { 
+      .then((data) => {
         if (data.message === undefined) {
           alert("Failed");
         } else {
@@ -62,18 +62,18 @@ const UsersTable = () => {
   };
 
   const handleDelete = async (username) => {
-    const data = JSON.stringify({username})
+    const data = JSON.stringify({ username });
 
     fetch("http://localhost:3000/admin/users", {
       method: "DELETE",
       headers: {
         "Content-type": "application/json",
-        "authorization": userData.token
+        authorization: userData.token,
       },
-      body: data
+      body: data,
     })
       .then((response) => response.json())
-      .then((data) => { 
+      .then((data) => {
         if (data.message === undefined) {
           alert("Failed");
         } else {
@@ -84,6 +84,7 @@ const UsersTable = () => {
         console.error(error);
       });
   };
+  ("");
 
   useEffect(() => {
     getData();
@@ -168,8 +169,12 @@ const UsersTable = () => {
                   <TableCell align="left">{user.role}</TableCell>
                   <TableCell align="left">1</TableCell>
                   <TableCell align="left">
-                    <Button onClick={() => handlePromote(user.username)}>Promote</Button>
-                    <Button onClick={() => handleDelete(user.username)}>Delete</Button>
+                    <Button onClick={() => handlePromote(user.username)}>
+                      Promote
+                    </Button>
+                    <Button onClick={() => handleDelete(user.username)}>
+                      Delete
+                    </Button>
                   </TableCell>
                 </TableRow>
               ))}
