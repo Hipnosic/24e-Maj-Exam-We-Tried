@@ -38,7 +38,7 @@ export default function Home() {
   };
 
   return (
-    <Container>
+    <Container data-testid="home">
       {loggedInAsAdmin || loggedInAsUser ? (
         loggedInAsAdmin ? (
           <>

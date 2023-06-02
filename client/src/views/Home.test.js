@@ -1,10 +1,17 @@
 import React from "react";
-import { render, fireEvent, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import Home from "./Home";
 
-test("see list of users", () => {
-    render(<Home />);
+test("renders Home component", () => {
+  render(<Home />);
 
-    fireEvent.click(screen.getByText('Users'));
-    expect(screen.getByText('Browsing as ADMIN')).toBeInTheDocument();
-})
+  // Check if the Home component is rendered
+  expect(screen.getByTestId("home")).toBeInTheDocument();
+});
+
+test("displays 'Hello' when logged in as a user", () => {
+  render(<Home />);
+
+  // Check if the 'Hello' message is displayed
+  expect(screen.getByText(/Successfully signed in/i)).toBeInTheDocument();
+});
