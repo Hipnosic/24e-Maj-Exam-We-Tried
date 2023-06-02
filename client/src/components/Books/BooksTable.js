@@ -1,8 +1,4 @@
 import React, { useEffect, useState } from "react";
-<<<<<<< HEAD
-import axios from "axios";
-=======
->>>>>>> dab7938fd369ea6e0f9c3c8722fa0c80e4a1f412
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -18,20 +14,13 @@ import GroupedButtons from "./GroupedButtons";
 
 const BooksTable = ({ loggedInAsUser, loggedInAsAdmin }) => {
   console.log("loggedInAsUser: ", loggedInAsUser);
-<<<<<<< HEAD
-=======
   const userData = JSON.parse(sessionStorage.getItem("userData"));
->>>>>>> dab7938fd369ea6e0f9c3c8722fa0c80e4a1f412
 
   const [booksData, setBooksData] = useState(null);
   const [booksError, setBooksError] = useState("");
 
   const getData = async () => {
     try {
-<<<<<<< HEAD
-      const response = await axios.get("http://localhost:3000/library/books");
-      setBooksData(response.data);
-=======
       const response = await fetch("http://localhost:3000/library/books");
       if (!response.ok) {
         throw new Error("Request failed with status: " + response.status);
@@ -39,20 +28,11 @@ const BooksTable = ({ loggedInAsUser, loggedInAsAdmin }) => {
 
       const data = await response.json();
       setBooksData(data.books);
->>>>>>> dab7938fd369ea6e0f9c3c8722fa0c80e4a1f412
     } catch (error) {
       setBooksError(error.message);
     }
   };
 
-<<<<<<< HEAD
-  const handleEdit = async () => {
-    console.log("edit");
-  };
-
-  const handleDelete = async () => {
-    console.log("delete");
-=======
   const handleEdit = async (book) => {
     const data = JSON.stringify({ book });
 
@@ -100,7 +80,6 @@ const BooksTable = ({ loggedInAsUser, loggedInAsAdmin }) => {
       .catch((error) => {
         console.error(error);
       });
->>>>>>> dab7938fd369ea6e0f9c3c8722fa0c80e4a1f412
   };
 
   useEffect(() => {
@@ -172,11 +151,11 @@ const BooksTable = ({ loggedInAsUser, loggedInAsAdmin }) => {
                 </TableCell>
                 {(loggedInAsUser || loggedInAsAdmin) && (
                   <TableCell align="left">
-<<<<<<< HEAD
-                    <Typography component="h1" variant="h5">
-=======
-                    <Typography component="h1" variant="h5" inputProps={{ "data-testid": "order-row"}}>
->>>>>>> dab7938fd369ea6e0f9c3c8722fa0c80e4a1f412
+                    <Typography
+                      component="h1"
+                      variant="h5"
+                      inputProps={{ "data-testid": "order-row" }}
+                    >
                       Order
                     </Typography>
                   </TableCell>
@@ -191,13 +170,8 @@ const BooksTable = ({ loggedInAsUser, loggedInAsAdmin }) => {
               </TableRow>
             </TableHead>
             <TableBody>
-<<<<<<< HEAD
-              {booksData.books.map((book) => (
-                <TableRow key={book.author}>
-=======
               {booksData.map((book) => (
                 <TableRow key={book.author} disabled={true}>
->>>>>>> dab7938fd369ea6e0f9c3c8722fa0c80e4a1f412
                   <TableCell component="th" scope="row">
                     {book.author}
                   </TableCell>
@@ -211,13 +185,9 @@ const BooksTable = ({ loggedInAsUser, loggedInAsAdmin }) => {
                   {loggedInAsAdmin && (
                     <TableCell align="left">
                       <Button onClick={handleEdit}>Edit</Button>
-<<<<<<< HEAD
-                      <Button onClick={handleDelete}>Delete</Button>
-=======
                       <Button onClick={() => handleDelete(book.title)}>
                         Delete
                       </Button>
->>>>>>> dab7938fd369ea6e0f9c3c8722fa0c80e4a1f412
                     </TableCell>
                   )}
                 </TableRow>

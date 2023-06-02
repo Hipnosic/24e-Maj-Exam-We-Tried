@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -27,26 +26,29 @@ const UsersTable = () => {
           Authorization: "Bearer " + userData.token,
         },
       };
-      const response = await axios.get(
-        "http://localhost:3000/admin/users",
-        config
-      );
-      setUsersData(response.data.users);
+
+      const response = await fetch("http://localhost:3000/admin/users", config);
+      if (!response.ok) {
+        throw new Error("Request failed with status: " + response.status);
+      }
+
+      const data = await response.json();
+      setUsersData(data.users);
     } catch (error) {
       setUsersError(error.message);
     }
   };
 
   const handlePromote = async (username) => {
-    const data = JSON.stringify({username})
+    const data = JSON.stringify({ username });
 
     fetch("http://localhost:3000/admin/users", {
       method: "PUT",
       headers: {
         "Content-type": "application/json",
-        Authorization: "Bearer " + userData.token,
+        authorization: userData.token,
       },
-      body: data
+      body: data,
     })
       .then((response) => response.json())
       .then((data) => {
@@ -61,8 +63,28 @@ const UsersTable = () => {
       });
   };
 
-  const handleDelete = async () => {
-    console.log("delete");
+  const handleDelete = async (username) => {
+    const data = JSON.stringify({ username });
+
+    fetch("http://localhost:3000/admin/users", {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json",
+        authorization: userData.token,
+      },
+      body: data,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.message === undefined) {
+          alert("Failed");
+        } else {
+          window.location.reload(false);
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   useEffect(() => {
@@ -144,12 +166,23 @@ const UsersTable = () => {
                 <TableRow key={user.username}>
                   <TableCell component="th" scope="row">
                     {user.username}
+                    {user.username === userData.name && " (Logged in user)"}
                   </TableCell>
                   <TableCell align="left">{user.role}</TableCell>
                   <TableCell align="left">1</TableCell>
                   <TableCell align="left">
-                    <Button onClick={() => handlePromote(user.username)}>Promote</Button>
-                    <Button onClick={handleDelete}>Delete</Button>
+                    <Button
+                      disabled={user.username === userData.name}
+                      onClick={() => handlePromote(user.username)}
+                    >
+                      Promote
+                    </Button>
+                    <Button
+                      disabled={user.username === userData.name}
+                      onClick={() => handleDelete(user.username)}
+                    >
+                      Delete
+                    </Button>
                   </TableCell>
                 </TableRow>
               ))}
