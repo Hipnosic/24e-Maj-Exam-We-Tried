@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import BooksTable from "../components/books/BooksTable";
+import BooksTable from "../components/Books/booksTable";
 
 describe("BooksTable", () => {
   it("renders an array of books with title, author, and quantity", () => {
@@ -12,6 +12,7 @@ describe("BooksTable", () => {
 
     const { getByText } = render(<BooksTable loggedInAsUser />);
     console.log(getByText);
+
 
     // Check if each book's title, author, and quantity are rendered
     booksData.forEach((book) => {

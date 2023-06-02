@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -27,11 +26,14 @@ const UsersTable = () => {
           Authorization: "Bearer " + userData.token,
         },
       };
-      const response = await axios.get(
-        "http://localhost:3000/admin/users",
-        config
-      );
-      setUsersData(response.data.users);
+  
+      const response = await fetch("http://localhost:3000/admin/users", config);
+      if (!response.ok) {
+        throw new Error("Request failed with status: " + response.status);
+      }
+  
+      const data = await response.json();
+      setUsersData(data.users);
     } catch (error) {
       setUsersError(error.message);
     }

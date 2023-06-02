@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import Login from './login';
+import Login from '../views/login';
 
 describe('HomePage', () => {
     it('renders order button when logged in', async () => {
