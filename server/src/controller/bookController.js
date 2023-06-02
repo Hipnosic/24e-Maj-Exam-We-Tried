@@ -6,7 +6,7 @@ const getAllBooks = (request, response) => {
 }
 
 const searchBook = (request, response) => {
-  const context = bookService.searchBook(request.body.query);
+  const context = bookService.searchBook(request.params.query);
   return response.send(context);
 }
 

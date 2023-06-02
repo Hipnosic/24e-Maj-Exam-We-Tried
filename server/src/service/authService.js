@@ -12,17 +12,19 @@ function authenticate(userDetails) {
     throw error;
   }
   
-  return jwtUtil.generate({username: user.username, role: user.role});
+  return {accessToken: jwtUtil.generate({username: user.username, role: user.role}), role: user.role};
 }
 
 function register(userDetails) {
-  const user = userRepository.searchUser(userDetails.username);
+  const user = userRepository.getUser(userDetails.username);
 
   if(user !== undefined) {
     let error = new Error("User already exist");
     error.name = "UserAlreadyExistException";
     throw error;
   }
+
+  console.log(user);
 
   return userRepository.addUser({...userDetails, role: "USER"});
 }

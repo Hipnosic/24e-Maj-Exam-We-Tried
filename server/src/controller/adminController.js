@@ -31,7 +31,11 @@ const updateBook = (request, response) => {
 const deleteBook = (request, response) => {
   const context = adminService.deleteBook(request.body);
 
-  return response.send({message: "Book removed successfully", context})
+  if(context.item === undefined) {
+    return response.status(404).send({error: "Book could not be found"});
+  } else {
+    return response.send({message: "Book removed successfully", context});
+  }
 }
 
 const deleteUser = (request, response) => {

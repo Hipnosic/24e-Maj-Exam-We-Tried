@@ -1,8 +1,4 @@
 import React, { useEffect, useState } from "react";
-<<<<<<< HEAD
-import axios from "axios";
-=======
->>>>>>> dab7938fd369ea6e0f9c3c8722fa0c80e4a1f412
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -14,56 +10,46 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import GroupedButtons from "./GroupedButtons";
+// import GroupedButtons from "./Books/GroupedButtons";
 
-const BooksTable = ({ loggedInAsUser, loggedInAsAdmin }) => {
-  console.log("loggedInAsUser: ", loggedInAsUser);
-<<<<<<< HEAD
-=======
+const UsersTable = () => {
   const userData = JSON.parse(sessionStorage.getItem("userData"));
->>>>>>> dab7938fd369ea6e0f9c3c8722fa0c80e4a1f412
 
-  const [booksData, setBooksData] = useState(null);
-  const [booksError, setBooksError] = useState("");
+  const [usersData, setUsersData] = useState(null);
+  const [usersError, setUsersError] = useState("");
 
+  // TODO:  Token ska hämtas dynamiskt från userData
   const getData = async () => {
     try {
-<<<<<<< HEAD
-      const response = await axios.get("http://localhost:3000/library/books");
-      setBooksData(response.data);
-=======
-      const response = await fetch("http://localhost:3000/library/books");
+      const config = {
+        headers: {
+          Authorization: "Bearer " + userData.token,
+        },
+      };
+  
+      const response = await fetch("http://localhost:3000/admin/users", config);
       if (!response.ok) {
         throw new Error("Request failed with status: " + response.status);
       }
-
+  
       const data = await response.json();
-      setBooksData(data.books);
->>>>>>> dab7938fd369ea6e0f9c3c8722fa0c80e4a1f412
+      setUsersData(data.users);
     } catch (error) {
-      setBooksError(error.message);
+      setUsersError(error.message);
     }
   };
 
-<<<<<<< HEAD
-  const handleEdit = async () => {
-    console.log("edit");
-  };
+  const handlePromote = async (username) => {
+    const data = JSON.stringify({ username });
 
-  const handleDelete = async () => {
-    console.log("delete");
-=======
-  const handleEdit = async (book) => {
-    const data = JSON.stringify({ book });
-
-    fetch("http://localhost:3000/library/books", {
-      method: "POST",
+    fetch("http://localhost:3000/admin/users", {
+      method: "PUT",
       headers: {
         "Content-type": "application/json",
         authorization: userData.token,
       },
       body: data,
-    })
+      })
       .then((response) => response.json())
       .then((data) => {
         if (data.message === undefined) {
@@ -77,11 +63,10 @@ const BooksTable = ({ loggedInAsUser, loggedInAsAdmin }) => {
       });
   };
 
-  const handleDelete = async (book) => {
-    const data = JSON.stringify({ title: book });
-    console.log(data);
+  const handleDelete = async (username) => {
+    const data = JSON.stringify({ username });
 
-    fetch("http://localhost:3000/admin/books", {
+    fetch("http://localhost:3000/admin/users", {
       method: "DELETE",
       headers: {
         "Content-type": "application/json",
@@ -100,7 +85,6 @@ const BooksTable = ({ loggedInAsUser, loggedInAsAdmin }) => {
       .catch((error) => {
         console.error(error);
       });
->>>>>>> dab7938fd369ea6e0f9c3c8722fa0c80e4a1f412
   };
 
   useEffect(() => {
@@ -157,69 +141,49 @@ const BooksTable = ({ loggedInAsUser, loggedInAsAdmin }) => {
               <TableRow>
                 <TableCell>
                   <Typography component="h1" variant="h5">
-                    Author
+                    Username
                   </Typography>
                 </TableCell>
                 <TableCell align="left">
                   <Typography component="h1" variant="h5">
-                    Quantity
+                    Role
                   </Typography>
                 </TableCell>
                 <TableCell align="left">
                   <Typography component="h1" variant="h5">
-                    Title
+                    Purchases
                   </Typography>
                 </TableCell>
-                {(loggedInAsUser || loggedInAsAdmin) && (
-                  <TableCell align="left">
-<<<<<<< HEAD
-                    <Typography component="h1" variant="h5">
-=======
-                    <Typography component="h1" variant="h5" inputProps={{ "data-testid": "order-row"}}>
->>>>>>> dab7938fd369ea6e0f9c3c8722fa0c80e4a1f412
-                      Order
-                    </Typography>
-                  </TableCell>
-                )}
-                {loggedInAsAdmin && (
-                  <TableCell align="left">
-                    <Typography component="h1" variant="h5">
-                      Action
-                    </Typography>
-                  </TableCell>
-                )}
+                <TableCell align="left">
+                  <Typography component="h1" variant="h5">
+                    Action
+                  </Typography>
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-<<<<<<< HEAD
-              {booksData.books.map((book) => (
-                <TableRow key={book.author}>
-=======
-              {booksData.map((book) => (
-                <TableRow key={book.author} disabled={true}>
->>>>>>> dab7938fd369ea6e0f9c3c8722fa0c80e4a1f412
+              {usersData.map((user) => (
+                <TableRow key={user.username}>
                   <TableCell component="th" scope="row">
-                    {book.author}
+                    {user.username}
+                    {user.username === userData.name && " (Logged in user)"}
                   </TableCell>
-                  <TableCell align="left">{book.quantity}</TableCell>
-                  <TableCell align="left">{book.title}</TableCell>
-                  {(loggedInAsUser || loggedInAsAdmin) && (
-                    <TableCell align="left">
-                      <GroupedButtons />
-                    </TableCell>
-                  )}
-                  {loggedInAsAdmin && (
-                    <TableCell align="left">
-                      <Button onClick={handleEdit}>Edit</Button>
-<<<<<<< HEAD
-                      <Button onClick={handleDelete}>Delete</Button>
-=======
-                      <Button onClick={() => handleDelete(book.title)}>
-                        Delete
-                      </Button>
->>>>>>> dab7938fd369ea6e0f9c3c8722fa0c80e4a1f412
-                    </TableCell>
-                  )}
+                  <TableCell align="left">{user.role}</TableCell>
+                  <TableCell align="left">1</TableCell>
+                  <TableCell align="left">
+                    <Button
+                      disabled={user.username === userData.name}
+                      onClick={() => handlePromote(user.username)}
+                    >
+                      Promote
+                    </Button>
+                    <Button
+                      disabled={user.username === userData.name}
+                      onClick={() => handleDelete(user.username)}
+                    >
+                      Delete
+                    </Button>
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -231,10 +195,10 @@ const BooksTable = ({ loggedInAsUser, loggedInAsAdmin }) => {
 
   return (
     <div>
-      {booksError && <p>Error: {booksError}</p>}
-      {booksData && <DisplayTable />}
+      {usersError && <p>Error: {usersError}</p>}
+      {usersData && <DisplayTable />}
     </div>
   );
 };
 
-export default BooksTable;
+export default UsersTable;
