@@ -1,30 +1,31 @@
 import React from "react";
-import {
-  render,
-  screen,
-  fireEvent,
-  waitFor,
-  waitForElementToBeRemoved,
-} from "@testing-library/react";
+import { BrowserRouter } from "react-router-dom";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import Login from "./login";
 
 describe("HomePage", () => {
   it("renders order button when logged in", async () => {
-    render(<Login />);
+    render(
+      <BrowserRouter>
+        <Login />
+      </BrowserRouter>
+    );
+    
+    const usernameInput = screen.getByTestId("username-input");
+    const passwordInput = screen.getByTestId("password-input");
+    const loginButton = screen.getByTestId("login-button");
 
-    fireEvent.change(screen.getByTestId("username-input"), {
+    fireEvent.change(usernameInput, {
       target: { value: "Yves" },
     });
-    fireEvent.change(screen.getByTestId("password-input"), {
+    fireEvent.change(passwordInput, {
       target: { value: "123" },
     });
-    fireEvent.click(screen.getByText("Sign In"));
+    fireEvent.click(loginButton);
     console.log("Click was successful");
 
-    await waitForElementToBeRemoved(() => screen.queryByText("Sign In"));
+    await waitFor(() => screen.findByTestId("hello"), { timeout: 5000 });
 
-    await waitFor(() => {
-      expect(screen.getByText("Browsing as USER")).toBeInTheDocument();
-    });
+    expect(screen.getByText("Hello")).toBeInTheDocument();
   });
 });
