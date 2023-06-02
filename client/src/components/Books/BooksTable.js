@@ -13,7 +13,7 @@ import Typography from "@mui/material/Typography";
 import GroupedButtons from "./GroupedButtons";
 
 const BooksTable = ({ loggedInAsUser, loggedInAsAdmin }) => {
-  console.log("loggedInAsUser: ", loggedInAsUser);
+  // console.log("loggedInAsUser: ", loggedInAsUser);
   const userData = JSON.parse(sessionStorage.getItem("userData"));
 
   const [booksData, setBooksData] = useState(null);
@@ -131,7 +131,11 @@ const BooksTable = ({ loggedInAsUser, loggedInAsAdmin }) => {
             // justifycontent: "space-between",
           }}
         >
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <Table
+            data-testid="books-table"
+            sx={{ minWidth: 650 }}
+            aria-label="simple table"
+          >
             <TableHead>
               <TableRow>
                 <TableCell>
@@ -185,7 +189,10 @@ const BooksTable = ({ loggedInAsUser, loggedInAsAdmin }) => {
                   {loggedInAsAdmin && (
                     <TableCell align="left">
                       <Button onClick={handleEdit}>Edit</Button>
-                      <Button onClick={() => handleDelete(book.title)}>
+                      <Button
+                        data-testid="Delete"
+                        onClick={() => handleDelete(book.title)}
+                      >
                         Delete
                       </Button>
                     </TableCell>
