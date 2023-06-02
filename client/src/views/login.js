@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -10,7 +10,9 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 
 const Login = () => {
-  const handleSubmit = (event) => {
+  const [loginMsg, setLoginMsg] = useState("");
+
+  const handleSubmit = (event, setLoginMsg) => {
     event.preventDefault();
 
     const loginData = new FormData(event.currentTarget);
@@ -32,6 +34,7 @@ const Login = () => {
           alert("Failed");
         } else {
           console.log(data);
+          setLoginMsg(data.message)
           // TODO: add JWT token
           sessionStorage.setItem(
             "userData",
@@ -74,7 +77,7 @@ const Login = () => {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+        <Box component="form" onSubmit={(event) => handleSubmit(event, setLoginMsg)} noValidate sx={{ mt: 1 }}>
           <TextField
             margin="normal"
             required
@@ -110,6 +113,8 @@ const Login = () => {
           >
             Sign In
           </Button>
+
+          <p data-testid="loginMsg">{loginMsg}</p>
 
           <Button fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
             Proceed as a guest

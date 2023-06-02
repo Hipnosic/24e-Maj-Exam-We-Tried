@@ -3,6 +3,7 @@ import { BrowserRouter } from "react-router-dom";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import Login from "./login";
 
+//Som en kund vill jag kunna logga in så jag kan se produkter
 describe("HomePage", () => {
   it("renders order button when logged in", async () => {
     render(
@@ -24,8 +25,7 @@ describe("HomePage", () => {
     fireEvent.click(loginButton);
     console.log("Click was successful");
 
-    await waitFor(() => screen.findByTestId("hello"), { timeout: 5000 });
-
-    expect(screen.getByText("Hello")).toBeInTheDocument();
+    const loginMsg = await screen.findByText("Successfully signed in");
+    expect(loginMsg).toBeInTheDocument();
   });
 });
