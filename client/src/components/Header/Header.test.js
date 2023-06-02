@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import Header from "../components/Header/Header";
+import Header from "./Header";
 
 test("should render the sign in button", () => {
   // Render the component

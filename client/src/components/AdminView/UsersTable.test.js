@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import UsersTable from "../components/AdminView/UsersTable";
+import UsersTable from "./UsersTable";
 
 test("buttons for logged-in user are disabled", () => {
   // Sample user data
