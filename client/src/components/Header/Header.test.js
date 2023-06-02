@@ -1,3 +1,4 @@
+//Den medföljande filen innehåller tester för Header-komponenten. Det första testet verifierar att knappen "Logga in" är korrekt återgiven, medan det andra testet säkerställer att komponenten innehåller en ankartagg med ett href-attribut som pekar på "/auth/login", vilket gör att användare kan navigera till inloggningssidan.
 import React from "react";
 import { render } from "@testing-library/react";
 import Header from "./Header";

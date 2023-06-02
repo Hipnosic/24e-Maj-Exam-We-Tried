@@ -1,3 +1,4 @@
+//Den här filen är ingångspunkten för React-applikationen, ansvarig för att rendera rotkomponenten (App) till DOM och ställa in prestandamätning med reportWebVitals.
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";

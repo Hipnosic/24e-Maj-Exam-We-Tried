@@ -1,3 +1,4 @@
+//Använder ej denna fil!
 const promoteUser = (data, token) => {
   fetch("http://localhost:3000/admin/users", {
     method: "PUT",

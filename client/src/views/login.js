@@ -1,3 +1,4 @@
+//Den tillhandahållna filen är en React-komponent för ett inloggningsformulär. Det innehåller formulärfält för användarnamn och lösenord, en kryssruta för "Kom ihåg mig" och knappar för att skicka in formuläret och fortsätta som gäst. Den hanterar formulärinlämning genom att skicka en POST-förfrågan till servern med inloggningsuppgifterna och hanterar svaret därefter. Den innehåller också länkar för att registrera dig och visa ett inloggningsmeddelande. Komponenten använder Material-UI-biblioteket för styling och UI-komponenter.
 import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -34,7 +35,7 @@ const Login = () => {
           alert("Failed");
         } else {
           console.log(data);
-          setLoginMsg(data.message)
+          setLoginMsg(data.message);
           // TODO: add JWT token
           sessionStorage.setItem(
             "userData",
@@ -77,7 +78,12 @@ const Login = () => {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <Box component="form" onSubmit={(event) => handleSubmit(event, setLoginMsg)} noValidate sx={{ mt: 1 }}>
+        <Box
+          component="form"
+          onSubmit={(event) => handleSubmit(event, setLoginMsg)}
+          noValidate
+          sx={{ mt: 1 }}
+        >
           <TextField
             margin="normal"
             required

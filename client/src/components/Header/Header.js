@@ -1,3 +1,4 @@
+//Den tillhandahållna filen definierar rubrikkomponenten, som representerar rubrikdelen av en webbplats. Den inkluderar en logotyp, användarstatusvisning (som indikerar användarens roll eller "Gäst") och en inloggnings-/utloggningsknapp baserad på närvaron av användardata i sessionslagringen. Om du klickar på knappen "Logga ut" tas användardata bort från sessionslagringen och sidan laddas om, medan länken "Logga in" omdirigerar användaren till inloggningssidan. Komponenten utformas med en CSS-modul (header.scss).
 import React from "react";
 import { Button, Container } from "@mui/material";
 import "./header.scss";

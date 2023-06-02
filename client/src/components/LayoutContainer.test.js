@@ -1,3 +1,4 @@
+//Den medföljande filen innehåller testfall för LayoutContainer-komponenten. Den verifierar att LayoutContainer återger sidhuvuds- och sidfotskomponenterna korrekt, samt återger det tillhandahållna underordnade innehållet i den. Dessa tester säkerställer korrekt rendering och integration av layoutkomponenterna i applikationen.
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import LayoutContainer from "./LayoutContainer";

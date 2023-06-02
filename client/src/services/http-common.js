@@ -1,3 +1,4 @@
+//Använder ej denna fil!
 const BASE_URL = "http://localhost:3000";
 
 const auth = {

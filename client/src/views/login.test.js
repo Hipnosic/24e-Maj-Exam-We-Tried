@@ -1,3 +1,4 @@
+//Den tillhandahållna filen är en testfil som verifierar inloggningsfunktionens funktionalitet. Den återger inloggningskomponenten i en BrowserRouter, simulerar en användarinloggning genom att fylla i fälten för användarnamn och lösenord och klicka på inloggningsknappen, och förväntar sig att hitta ett framgångsmeddelande som indikerar en lyckad inloggning.
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
@@ -11,7 +12,7 @@ describe("HomePage", () => {
         <Login />
       </BrowserRouter>
     );
-    
+
     const usernameInput = screen.getByTestId("username-input");
     const passwordInput = screen.getByTestId("password-input");
     const loginButton = screen.getByTestId("login-button");
