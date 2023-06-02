@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
-<<<<<<< HEAD
 import axios from "axios";
-=======
->>>>>>> dab7938fd369ea6e0f9c3c8722fa0c80e4a1f412
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -12,42 +9,65 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import { Input } from "@mui/material";
-import ButtonGroup from "@mui/material/ButtonGroup";
-import { Link } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+// import GroupedButtons from "./Books/GroupedButtons";
 
-const Admin = () => {
-  const [booksData, setBooksData] = useState(null);
-  const [booksError, setBooksError] = useState("");
+const UsersTable = () => {
+  const userData = JSON.parse(sessionStorage.getItem("userData"));
 
+  const [usersData, setUsersData] = useState(null);
+  const [usersError, setUsersError] = useState("");
+
+  // TODO:  Token ska hämtas dynamiskt från userData
   const getData = async () => {
     try {
-<<<<<<< HEAD
-      const response = await axios.get("http://localhost:3000/library/books");
-      setBooksData(response.data);
-=======
-      const response = await fetch("http://localhost:3000/library/books");
-      if (!response.ok) {
-        throw new Error("Request failed with status: " + response.status);
-      }
-  
-      const data = await response.json();
-      setBooksData(data);
->>>>>>> dab7938fd369ea6e0f9c3c8722fa0c80e4a1f412
+      const config = {
+        headers: {
+          Authorization: "Bearer " + userData.token,
+        },
+      };
+      const response = await axios.get(
+        "http://localhost:3000/admin/users",
+        config
+      );
+      setUsersData(response.data.users);
     } catch (error) {
-      setBooksError(error.message);
+      setUsersError(error.message);
     }
+  };
+
+  const handlePromote = async (username) => {
+    const data = JSON.stringify({username})
+
+    fetch("http://localhost:3000/admin/users", {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: "Bearer " + userData.token,
+      },
+      body: data
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.message === undefined) {
+          alert("Failed");
+        } else {
+          alert(data.message);
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  const handleDelete = async () => {
+    console.log("delete");
   };
 
   useEffect(() => {
     getData();
   }, []);
-
-  function orderAlert() {
-    alert("order wars successful");
-  }
 
   const DisplayTable = () => {
     return (
@@ -59,7 +79,7 @@ const Admin = () => {
       >
         <Box
           sx={{
-            bgcolor: "lightgray",
+            bgcolor: "lightgrey",
             boxShadow: 3,
             borderRadius: 2,
             // px: 50,
@@ -74,33 +94,18 @@ const Admin = () => {
             // justifycontent: "space-between",
           }}
         >
-          <Typography component="h1" variant="h5">
-            <h1>Booksters Website</h1>
-            <p>Browsing as admin (username)</p>
-          </Typography>
           <TextField id="outlined-basic" label="Search" variant="outlined" />
-          <ButtonGroup
-            disableElevation
-            variant="contained"
-            aria-label="Disabled elevation buttons"
-          >
-            <Button>Users</Button>
-            <Button>Books</Button>
-          </ButtonGroup>
-          <Link to="/">
-            <Button variant="outlined">Logout</Button>
-          </Link>
         </Box>
 
         <Box
           sx={{
-            bgcolor: "lightgray",
+            bgcolor: "lightgrey",
             boxShadow: 3,
             borderRadius: 2,
             // px: 50,
             py: 2,
             marginTop: 2,
-            marginBottom: 4,
+            // marginBottom: 4,
             marginLeft: 6,
             marginRight: 6,
             display: "flex",
@@ -114,22 +119,17 @@ const Admin = () => {
               <TableRow>
                 <TableCell>
                   <Typography component="h1" variant="h5">
-                    Author
+                    Username
                   </Typography>
                 </TableCell>
                 <TableCell align="left">
                   <Typography component="h1" variant="h5">
-                    Title
+                    Role
                   </Typography>
                 </TableCell>
                 <TableCell align="left">
                   <Typography component="h1" variant="h5">
-                    Quantity
-                  </Typography>
-                </TableCell>
-                <TableCell align="left">
-                  <Typography component="h1" variant="h5">
-                    Order
+                    Purchases
                   </Typography>
                 </TableCell>
                 <TableCell align="left">
@@ -140,24 +140,16 @@ const Admin = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {booksData.books.map((book) => (
-                <TableRow key={book.author}>
+              {usersData.map((user) => (
+                <TableRow key={user.username}>
                   <TableCell component="th" scope="row">
-                    {book.author}
+                    {user.username}
                   </TableCell>
-                  <TableCell align="left">{book.title}</TableCell>
-                  <TableCell align="left">{book.quantity}</TableCell>
+                  <TableCell align="left">{user.role}</TableCell>
+                  <TableCell align="left">1</TableCell>
                   <TableCell align="left">
-                    <Button>+</Button>
-                    <Input></Input>
-                    <Button>-</Button>
-                    <Button onClick={orderAlert} variant="contained">
-                      Order
-                    </Button>
-                  </TableCell>
-                  <TableCell align="left">
-                    <Button>Edit</Button>
-                    <Button>Delete</Button>
+                    <Button onClick={() => handlePromote(user.username)}>Promote</Button>
+                    <Button onClick={handleDelete}>Delete</Button>
                   </TableCell>
                 </TableRow>
               ))}
@@ -170,10 +162,10 @@ const Admin = () => {
 
   return (
     <div>
-      {booksError && <p>Error: {booksError}</p>}
-      {booksData && <DisplayTable />}
+      {usersError && <p>Error: {usersError}</p>}
+      {usersData && <DisplayTable />}
     </div>
   );
 };
 
-export default Admin;
+export default UsersTable;

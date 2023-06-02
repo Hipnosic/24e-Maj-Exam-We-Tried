@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from "react";
+<<<<<<< HEAD
+import axios from "axios";
+=======
+>>>>>>> dab7938fd369ea6e0f9c3c8722fa0c80e4a1f412
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -18,6 +22,10 @@ const Guest = () => {
 
   const getData = async () => {
     try {
+<<<<<<< HEAD
+      const response = await axios.get("http://localhost:3000/library/books");
+      setBooksData(response.data);
+=======
       const response = await fetch("http://localhost:3000/library/books");
       if (!response.ok) {
         throw new Error("Request failed with status: " + response.status);
@@ -25,6 +33,7 @@ const Guest = () => {
   
       const data = await response.json();
       setBooksData(data);
+>>>>>>> dab7938fd369ea6e0f9c3c8722fa0c80e4a1f412
     } catch (error) {
       setBooksError(error.message);
     }

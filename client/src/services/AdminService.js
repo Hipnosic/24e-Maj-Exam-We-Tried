@@ -1,3 +1,13 @@
+<<<<<<< HEAD
+// import {admin} from './http-common';
+
+// getAllUsers(token) {
+//     const headers = {
+//         "Content-type": "application/json",
+//         "authorization": `${token.accessToken}`
+//     }
+// }
+=======
 const promoteUser = (data, token) => {
     fetch("http://localhost:3000/admin/users", {
         method: "PUT",
@@ -44,3 +54,4 @@ const deleteUser = (data, token) => {
 }
 
 export default { promoteUser, deleteUser }
+>>>>>>> dab7938fd369ea6e0f9c3c8722fa0c80e4a1f412

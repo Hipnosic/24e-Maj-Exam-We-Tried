@@ -1,3 +1,29 @@
+<<<<<<< HEAD
+import axios from "axios";
+
+const auth = axios.create({
+    baseURL: "http://localhost:3000/auth",
+    headers: {
+        "Content-type": "applicatino/json"
+    }
+});
+
+const books = axios.create({
+    baseURL: "http://localhost:3000/library",
+    headers: {
+        "Content-type": "application/json",
+    }
+});
+
+const admin = axios.create({
+    baseURL: "http://localhost:3000/admin",
+    headers: {
+        "Content-type": "application/json",
+    }
+});
+
+export {auth, books, admin}
+=======
 const BASE_URL = "http://localhost:3000";
 
 const auth = {
@@ -65,3 +91,4 @@ const admin = {
 };
 
 export { auth, books, admin };
+>>>>>>> dab7938fd369ea6e0f9c3c8722fa0c80e4a1f412

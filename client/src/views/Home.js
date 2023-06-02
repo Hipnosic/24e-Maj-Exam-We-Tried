@@ -4,7 +4,11 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import BooksTable from "../components/Books/BooksTable";
+<<<<<<< HEAD
+import UsersTable from "../components/AdminView/UsersTable";
+=======
 import UsersTable from "../components/Users/UsersTable";
+>>>>>>> dab7938fd369ea6e0f9c3c8722fa0c80e4a1f412
 import { Container } from "@mui/material";
 
 const TabPanel = ({ children, value, index, ...other }) => {
