@@ -31,7 +31,6 @@ const UsersTable = () => {
       if (!response.ok) {
         throw new Error("Request failed with status: " + response.status);
       }
-  
       const data = await response.json();
       setUsersData(data.users);
     } catch (error) {
@@ -49,7 +48,7 @@ const UsersTable = () => {
         authorization: userData.token,
       },
       body: data,
-      })
+    })
       .then((response) => response.json())
       .then((data) => {
         if (data.message === undefined) {
