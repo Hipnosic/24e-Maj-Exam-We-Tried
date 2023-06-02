@@ -65,6 +65,7 @@ export default function Home() {
         ) : (
           <>
             {/* User vy */}
+            <p data-testid="hello">Hello</p>
             <BooksTable loggedInAsUser={true} loggedInAsAdmin={false} />
           </>
         )

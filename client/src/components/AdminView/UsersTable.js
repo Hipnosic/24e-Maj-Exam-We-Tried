@@ -177,14 +177,14 @@ const UsersTable = () => {
                     <Button
                       disabled={user.username === userData.name}
                       onClick={() => handlePromote(user.username)}
-                      inputProps={{ "data-testid": "promoteButton" }}
+                      data-testid="promoteButton"
                     >
                       Promote
                     </Button>
                     <Button
                       disabled={user.username === userData.name}
                       onClick={() => handleDelete(user.username)}
-                      inputProps={{ "data-testid": "deleteButton" }}
+                      data-testid="deleteButton"
                     >
                       Delete
                     </Button>
