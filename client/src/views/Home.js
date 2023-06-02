@@ -3,7 +3,7 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import BooksTable from "../components/Books/booksTable";
+import BooksTable from "../components/Books/BooksTable";
 import UsersTable from "../components/Users/UsersTable";
 import { Container } from "@mui/material";
 
