@@ -1,9 +1,12 @@
-import React from "react";
+import React, { createContext } from "react";
 import { render } from "@testing-library/react";
 import UsersTable from "./UsersTable";
 
 test("buttons for logged-in user are disabled", () => {
   // Sample user data
+
+  const UserContext = createContext();
+
   const userData = {
     username: "Bob",
     password: "123",
@@ -14,9 +17,9 @@ test("buttons for logged-in user are disabled", () => {
   const { getByText } = render(<UsersTable />, {
     // Pass the sample user data via context or props
     wrapper: ({ children }) => (
-      <YourContext.Provider value={{ userData }}>
+      <UserContext.Provider value={{ userData }}>
         {children}
-      </YourContext.Provider>
+      </UserContext.Provider>
     ),
   });
 
