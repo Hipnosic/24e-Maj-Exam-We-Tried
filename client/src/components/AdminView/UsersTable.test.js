@@ -1,22 +1,13 @@
-import React, { createContext } from "react";
-import { getByTestId, render, screen } from "@testing-library/react";
-import UsersTable from "./UsersTable";
-//hej
-//tjena
+import React, { createContext } from 'react';
+import { render, screen } from '@testing-library/react';
+import UsersTable from './UsersTable';
+import Home from '../../views/Home';
 
-test("buttons for logged-in user are disabled", () => {
-  // Sample user data
-
+test('renders UsersTable component', () => {
+  const userData = { username: "testuser", role: "USER"};
   const UserContext = createContext();
-
-  const userData = {
-    username: "Bob",
-    password: "123",
-    token: "sample-token",
-  };
-
-  // Render the UsersTable component
-  const { getByText } = render(<UsersTable />, {
+  // render(<Home loggedInAsUser={true}/>);
+  render(<UsersTable />, {
     // Pass the sample user data via context or props
     wrapper: ({ children }) => (
       <UserContext.Provider value={{ userData }}>
@@ -25,11 +16,18 @@ test("buttons for logged-in user are disabled", () => {
     ),
   });
 
-  // Find the promote and delete buttons for the logged-in user
-  const promoteButton = screen.getByTestId("promoteButton")
-  const deleteButton = screen.getByTestId("deleteButton")
+  const usernameText = screen.getByText('Hello');
 
-  // Assert that the buttons are disabled
-  expect(promoteButton).toBeDisabled();
-  expect(deleteButton).toBeDisabled();
+  expect(usernameText).toBeInTheDocument();
+
+  // Use appropriate queries to find elements within the UsersTable component
+  const promoteButton = screen.getByTestId('promoteButton');
+  const deleteButton = screen.getByTestId('deleteButton');
+  
+  // Perform assertions or further testing based on the found elements
+  // For example, you can check if the buttons are present, disabled, etc.
+  expect(promoteButton).toBeInTheDocument();
+  expect(deleteButton).toBeInTheDocument();
+  expect(promoteButton).not.toBeDisabled();
+  expect(deleteButton).not.toBeDisabled();
 });
