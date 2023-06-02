@@ -26,7 +26,7 @@ const UsersTable = () => {
           Authorization: "Bearer " + userData.token,
         },
       };
-  
+
       const response = await fetch("http://localhost:3000/admin/users", config);
       if (!response.ok) {
         throw new Error("Request failed with status: " + response.status);
@@ -135,7 +135,11 @@ const UsersTable = () => {
             // justifycontent: "space-between",
           }}
         >
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <Table
+            data-testid="user-table"
+            sx={{ minWidth: 650 }}
+            aria-label="simple table"
+          >
             <TableHead>
               <TableRow>
                 <TableCell>
