@@ -26,12 +26,11 @@ const UsersTable = () => {
           Authorization: "Bearer " + userData.token,
         },
       };
-
+  
       const response = await fetch("http://localhost:3000/admin/users", config);
       if (!response.ok) {
         throw new Error("Request failed with status: " + response.status);
       }
-
       const data = await response.json();
       setUsersData(data.users);
     } catch (error) {
