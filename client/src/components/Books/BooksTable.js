@@ -1,3 +1,4 @@
+// BooksTable.js-filen är en React-komponent som ansvarar för att rendera en tabell med böcker. Den hämtar bokdata från en server, visar böckerna i tabellformat och tillhandahåller funktioner som sökning, beställning, redigering och radering av böcker baserat på användarens roll (admin eller användare). Komponenten använder olika Material-UI-komponenter för styling och interaktion, och den hanterar datahämtning och API-förfrågningar med hämta API.
 import React, { useEffect, useState } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
