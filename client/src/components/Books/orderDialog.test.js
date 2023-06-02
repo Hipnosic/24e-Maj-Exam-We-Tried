@@ -1,6 +1,6 @@
 import React from "react";
 import { render, fireEvent, screen } from "@testing-library/react";
-import FormDialog from "../components/Books/orderDialog"
+import FormDialog from "./orderDialog"
 
 test("order button to order product", () => {
     render(<FormDialog />);
