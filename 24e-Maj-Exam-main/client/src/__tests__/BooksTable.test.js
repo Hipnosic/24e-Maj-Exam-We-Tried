@@ -10,7 +10,8 @@ describe("BooksTable", () => {
       { title: "Book 3", author: "Author 3", quantity: 2 },
     ];
 
-    const { getByText } = render(<BooksTable booksData={booksData} />);
+    const { getByText } = render(<BooksTable loggedInAsUser />);
+    console.log(getByText);
 
     // Check if each book's title, author, and quantity are rendered
     booksData.forEach((book) => {
