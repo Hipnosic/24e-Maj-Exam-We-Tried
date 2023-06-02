@@ -1,5 +1,5 @@
 import React, { createContext } from "react";
-import { render } from "@testing-library/react";
+import { getByTestId, render, screen } from "@testing-library/react";
 import UsersTable from "./UsersTable";
 
 test("buttons for logged-in user are disabled", () => {
@@ -24,8 +24,8 @@ test("buttons for logged-in user are disabled", () => {
   });
 
   // Find the promote and delete buttons for the logged-in user
-  const promoteButton = getByText("Promote");
-  const deleteButton = getByText("Delete");
+  const promoteButton = screen.getByTestId("promoteButton")
+  const deleteButton = screen.getByTestId("deleteButton")
 
   // Assert that the buttons are disabled
   expect(promoteButton).toBeDisabled();
