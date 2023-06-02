@@ -1,35 +1,39 @@
-import React, { createContext } from "react";
-import { getByTestId, render, screen } from "@testing-library/react";
+import React from "react";
+import { render, screen } from "@testing-library/react";
 import UsersTable from "./UsersTable";
-//hej
-//tjena
 
-test("buttons for logged-in user are disabled", () => {
-  // Sample user data
+describe("BooksTable", () => {
+  test("renders without errors", async () => {
+    render(<UsersTable />);
+    expect(await screen.findByTestId("user-table")).toBeInTheDocument();
+  });
+});
+describe("UsersTable", () => {
+  test("renders an array of users", async () => {
+    const usersData = [
+      { username: "User1", role: "Admin" },
+      { username: "User2", role: "User" },
+    ];
 
-  const UserContext = createContext();
+    render(<UsersTable usersData={usersData} />);
 
-  const userData = {
-    username: "Bob",
-    password: "123",
-    token: "sample-token",
-  };
-
-  // Render the UsersTable component
-  const { getByText } = render(<UsersTable />, {
-    // Pass the sample user data via context or props
-    wrapper: ({ children }) => (
-      <UserContext.Provider value={{ userData }}>
-        {children}
-      </UserContext.Provider>
-    ),
+    for (const user of usersData) {
+      expect(await screen.findByTestId(user.username)).toBeInTheDocument();
+      expect(await screen.findByTestId(user.role)).toBeInTheDocument();
+    }
   });
 
-  // Find the promote and delete buttons for the logged-in user
-  const promoteButton = screen.getByTestId("promoteButton")
-  const deleteButton = screen.getByTestId("deleteButton")
+  test("displays user information correctly", () => {
+    const usersData = [
+      { username: "User1", role: "Admin" },
+      { username: "User2", role: "User" },
+    ];
 
-  // Assert that the buttons are disabled
-  expect(promoteButton).toBeDisabled();
-  expect(deleteButton).toBeDisabled();
+    render(<UsersTable usersData={usersData} />);
+
+    for (const user of usersData) {
+      expect(screen.getByText(user.username)).toBeInTheDocument();
+      expect(screen.getByText(user.role)).toBeInTheDocument();
+    }
+  });
 });

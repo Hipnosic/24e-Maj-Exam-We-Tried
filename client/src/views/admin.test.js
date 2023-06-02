@@ -5,7 +5,7 @@ describe("Button", () => {
   it("should call a function when clicked", async () => {
     render(<Admin />);
 
-    fireEvent.click(screen.getByText("Order"));
+    fireEvent.click(await screen.findByTestId("Order"));
     console.log("Click was successful");
 
     await waitFor(() => {

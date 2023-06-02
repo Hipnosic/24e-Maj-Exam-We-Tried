@@ -142,7 +142,11 @@ const Admin = () => {
                     <Button>+</Button>
                     <Input></Input>
                     <Button>-</Button>
-                    <Button onClick={orderAlert} variant="contained">
+                    <Button
+                      data-testid="Order"
+                      onClick={orderAlert}
+                      variant="contained"
+                    >
                       Order
                     </Button>
                   </TableCell>
