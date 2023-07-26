@@ -22,6 +22,7 @@ const Header = () => {
             <span>Browsing as: {userData ? userData.role : "Guest"}</span>
             {userData ? (
               <Button
+                className="Logout-btn"
                 inputProps={{ "data-testid": "Log Out" }}
                 onClick={handleLogout}
               >
