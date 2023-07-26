@@ -28,9 +28,7 @@ const Header = () => {
                 Sign out
               </Button>
             ) : (
-              <Button>
-                <a href="/auth/login">Sign in</a>
-              </Button>
+              <a href="/auth/login">Sign in</a>
             )}
           </div>
         </Container>
