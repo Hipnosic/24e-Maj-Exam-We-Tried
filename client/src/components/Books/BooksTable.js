@@ -89,12 +89,7 @@ const BooksTable = ({ loggedInAsUser, loggedInAsAdmin }) => {
 
   const DisplayTable = () => {
     return (
-      <TableContainer
-        component={Paper}
-        style={{
-          backgroundColor: "white",
-        }}
-      >
+      <>
         <Box
           sx={{
             bgcolor: "lightgrey",
@@ -203,7 +198,7 @@ const BooksTable = ({ loggedInAsUser, loggedInAsAdmin }) => {
             </TableBody>
           </Table>
         </Box>
-      </TableContainer>
+      </>
     );
   };
 
