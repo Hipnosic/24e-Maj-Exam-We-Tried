@@ -92,12 +92,7 @@ const UsersTable = () => {
 
   const DisplayTable = () => {
     return (
-      <TableContainer
-        component={Paper}
-        style={{
-          backgroundColor: "white",
-        }}
-      >
+      <>
         <Box
           sx={{
             bgcolor: "lightgrey",
@@ -194,7 +189,7 @@ const UsersTable = () => {
             </TableBody>
           </Table>
         </Box>
-      </TableContainer>
+      </>
     );
   };
 

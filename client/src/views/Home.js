@@ -50,7 +50,7 @@ export default function Home() {
                   onChange={handleChange}
                   aria-label="basic tabs example"
                 >
-                  <Tab label="Books" />
+                  <Tab className="BooksTabs" label="Books" />
                   <Tab label="Users" />
                 </Tabs>
               </Box>

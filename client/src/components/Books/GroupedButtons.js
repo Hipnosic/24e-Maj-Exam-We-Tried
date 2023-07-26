@@ -22,7 +22,7 @@ const GroupedButtons = () => {
         {displayCounter && <Button disabled>{counter}</Button>}
         <Button onClick={handleIncrement}>+</Button>
       </ButtonGroup>
-      <FormDialog></FormDialog>
+      <FormDialog className="formDialog"></FormDialog>
     </>
   );
 };
