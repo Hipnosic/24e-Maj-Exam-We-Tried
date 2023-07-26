@@ -118,6 +118,7 @@ const BooksTable = ({ loggedInAsUser, loggedInAsAdmin }) => {
             // px: 50,
             py: 2,
             marginTop: 2,
+            marginBottom: 3,
             // marginBottom: 4,
             marginLeft: 6,
             marginRight: 6,
