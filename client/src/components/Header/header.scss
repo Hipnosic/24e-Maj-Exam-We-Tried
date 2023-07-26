@@ -52,6 +52,18 @@
       .Login-btn:hover {
         background-color: rgb(240,124,41);
       }
+    .Logout-btn {
+        background-color:  rgb(80,81,85);
+        margin-top: 1rem;
+        margin-left: 1rem;
+        text-decoration: none;
+        color: white;
+        font-size: 0.9rem;
+        font-weight: bold;
+    }
+    .Logout-btn:hover {
+        background-color: rgb(240,124,41);
+    }
 }
 
 Button a {
