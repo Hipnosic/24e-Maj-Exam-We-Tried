@@ -2,6 +2,8 @@
     background-color:white;
     padding: 1rem 0rem;
     margin-bottom: 4rem;
+    border-bottom:solid 0.5rem;
+    border-color: rgb(240,124,41);
 
     .header__container {
         display: flex;
@@ -19,9 +21,35 @@
    .logo {
     font-family:"Copperplate", fantasy;
     color: rgb(240,124,41);
+    font-size: 1.8rem;
+    margin-left: 3rem;
    }
-}
+    .user-status__container {
+        font-family:"Courier New", Monospace;
+        color: rgb(240,124,41);
+        margin-right: 3rem;
+    }
 
-.LogoutBtn {
-    text-decoration: none;
+    .header-btns {
+        font-family:"Open Sans", sans-serif;
+        margin-top: 1rem;
+        // background-color:  rgb(240,124,41);
+        color:rgb(240,124,41) ;
+        }
+
+    .Login-btn {
+        margin-right: 1rem;
+        margin-left: 2rem;
+        background-color:  rgb(80,81,85);
+        
+    }
+    .Signup-btn {
+        background-color:  rgb(80,81,85);
+    }
+    .Signup-btn:hover {
+        background-color: rgb(240,124,41);
+      }
+      .Login-btn:hover {
+        background-color: rgb(240,124,41);
+      }
 }

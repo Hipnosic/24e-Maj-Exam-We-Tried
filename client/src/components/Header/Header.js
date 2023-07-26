@@ -19,7 +19,7 @@ const Header = () => {
             <span>Bookster website</span>
           </div>
           <div className="user-status__container">
-            <span>Browsing as {userData ? userData.role : "Guest"}</span>
+            <span>Browsing as: {userData ? userData.role : "Guest"}</span>
             {userData ? (
               <Button
                 inputProps={{ "data-testid": "Log Out" }}
@@ -28,9 +28,14 @@ const Header = () => {
                 Log out
               </Button>
             ) : (
-              <Button>
-                <a href="/auth/login">Sign in</a>
-              </Button>
+              <div className="header-btns">
+                <Button className="Login-btn">
+                  <a href="/auth/login">Login</a>
+                </Button>
+                <Button className="Signup-btn">
+                  <a href="/auth/login">Signup</a>
+                </Button>
+              </div>
             )}
           </div>
         </Container>
