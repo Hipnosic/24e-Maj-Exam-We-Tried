@@ -28,8 +28,8 @@ const Header = () => {
                 Log out
               </Button>
             ) : (
-              <Button className="Login-btn">
-                <a href="/auth/login">Login</a>
+              <Button>
+                <a href="/auth/login">Sign in</a>
               </Button>
             )}
           </div>
