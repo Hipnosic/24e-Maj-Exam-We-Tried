@@ -1,5 +1,5 @@
 .header {
-    background-color:lightgrey;
+    background-color:white;
     padding: 1rem 0rem;
     margin-bottom: 4rem;
 
@@ -16,4 +16,8 @@
         justify-content: center;
     }
 
+   .logo {
+    font-family:"Copperplate", fantasy;
+    color: rgb(240,124,41);
+   }
 }

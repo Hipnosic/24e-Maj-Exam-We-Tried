@@ -22,14 +22,14 @@ const Header = () => {
             <span>Browsing as {userData ? userData.role : "Guest"}</span>
             {userData ? (
               <Button
-                inputProps={{ "data-testid": "SignOut" }}
+                inputProps={{ "data-testid": "Log Out" }}
                 onClick={handleLogout}
               >
-                Sign out
+                Log out
               </Button>
             ) : (
-              <Button>
-                <a href="/auth/login">Sign in</a>
+              <Button className="Login-btn">
+                <a href="/auth/login">Login</a>
               </Button>
             )}
           </div>
