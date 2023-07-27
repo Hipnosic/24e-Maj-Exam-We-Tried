@@ -1,11 +1,12 @@
-import * as React from 'react';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
+import * as React from "react";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import PrimaryButton from "../PrimaryButton/PrimaryButton";
 
 export default function FormDialog() {
   const [open, setOpen] = React.useState(false);
@@ -19,20 +20,23 @@ export default function FormDialog() {
   };
 
   const handleOrder = async () => {
-    alert("You have been scammed")
+    alert("You have been scammed");
     setOpen(false);
   };
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Order
-      </Button>
+      <PrimaryButton
+        title={"Order"}
+        variant="outlined"
+        onClick={handleClickOpen}
+      />
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Order Product</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            To order the product, you will need to enter your information and credit card.
+            To order the product, you will need to enter your information and
+            credit card.
           </DialogContentText>
           <TextField
             autoFocus

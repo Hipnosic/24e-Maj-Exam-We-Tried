@@ -49,6 +49,22 @@ export default function Home() {
                   value={value}
                   onChange={handleChange}
                   aria-label="basic tabs example"
+                  TabIndicatorProps={{ style: { backgroundColor: "#F07C29" } }}
+                  sx={{
+                    "& .MuiTab-root": {
+                      color: "white",
+                      transition: "all 0.2s ease-in-out",
+                      fontSize: "0.9rem",
+                      fontWeight: "bold",
+                      "&.Mui-selected": {
+                        background: "#505155",
+                        color: "white",
+                        "&:hover": {
+                          background: "#F07C29",
+                        },
+                      },
+                    },
+                  }}
                 >
                   <Tab className="BooksTabs" label="Books" />
                   <Tab label="Users" />
