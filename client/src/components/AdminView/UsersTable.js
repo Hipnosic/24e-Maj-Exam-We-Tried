@@ -111,7 +111,18 @@ const UsersTable = () => {
             // justifycontent: "space-between",
           }}
         >
-          <TextField id="outlined-basic" label="Search" variant="outlined" />
+          <TextField id="outlined-basic" label="Search" variant="outlined" 
+            sx={{
+              '& label.Mui-focused': {
+                color: 'black',
+              },
+              "& .MuiOutlinedInput-root": {
+                '&.Mui-focused fieldset': {
+                  borderColor: '#F07C29',
+                },
+              }
+            }}
+          />
         </Box>
 
         <Box
