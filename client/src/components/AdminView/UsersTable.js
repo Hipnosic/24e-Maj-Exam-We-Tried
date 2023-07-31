@@ -6,7 +6,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import Button from "@mui/material/Button";
+import PrimaryButton from "../PrimaryButton/PrimaryButton";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -107,6 +107,7 @@ const UsersTable = () => {
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
+            justifyContent: "center"
             // justifycontent: "space-between",
           }}
         >
@@ -169,7 +170,7 @@ const UsersTable = () => {
                   <TableCell align="left">{user.role}</TableCell>
                   <TableCell align="left">1</TableCell>
                   <TableCell align="left">
-                    <Button
+                    <PrimaryButton
                       variant="contained"
                       sx={{m: 2}}
                       disabled={user.username === userData.name}
@@ -177,15 +178,15 @@ const UsersTable = () => {
                       data-testid="promoteButton"
                     >
                       Promote
-                    </Button>
-                    <Button
+                    </PrimaryButton>
+                    <PrimaryButton
                       variant="contained"
                       disabled={user.username === userData.name}
                       onClick={() => handleDelete(user.username)}
                       data-testid="deleteButton"
                     >
                       Delete
-                    </Button>
+                    </PrimaryButton>
                   </TableCell>
                 </TableRow>
               ))}

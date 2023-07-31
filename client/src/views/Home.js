@@ -53,15 +53,13 @@ export default function Home() {
                   sx={{
                     "& .MuiTab-root": {
                       color: "white",
+                      background: "#505155",
                       transition: "all 0.2s ease-in-out",
                       fontSize: "0.9rem",
                       fontWeight: "bold",
                       "&.Mui-selected": {
-                        background: "#505155",
+                        background: "#F07C29",
                         color: "white",
-                        "&:hover": {
-                          background: "#F07C29",
-                        },
                       },
                     },
                   }}
