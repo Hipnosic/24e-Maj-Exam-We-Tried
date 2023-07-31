@@ -18,9 +18,9 @@ const GroupedButtons = () => {
   return (
     <>
       <ButtonGroup size="small" aria-label="small outlined button group">
-        {displayCounter && <Button onClick={handleDecrement}>-</Button>}
+        {displayCounter && <Button variant="contained" onClick={handleDecrement}>-</Button>}
         {displayCounter && <Button disabled>{counter}</Button>}
-        <Button onClick={handleIncrement}>+</Button>
+        <Button variant="contained" onClick={handleIncrement}>+</Button>
       </ButtonGroup>
       <FormDialog className="formDialog"></FormDialog>
     </>

@@ -12,7 +12,7 @@ import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import GroupedButtons from "./GroupedButtons";
-import "./Books.scss";
+import './Books.scss';
 
 const BooksTable = ({ loggedInAsUser, loggedInAsAdmin }) => {
   // console.log("loggedInAsUser: ", loggedInAsUser);
@@ -105,7 +105,7 @@ const BooksTable = ({ loggedInAsUser, loggedInAsAdmin }) => {
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
-            justifyContent: "center",
+            justifyContent: "center", 
             // justifycontent: "space-between",
           }}
         >
@@ -187,8 +187,9 @@ const BooksTable = ({ loggedInAsUser, loggedInAsAdmin }) => {
                   )}
                   {loggedInAsAdmin && (
                     <TableCell align="left">
-                      <Button onClick={handleEdit}>Edit</Button>
+                      <Button variant="contained" sx={{m: 2}} onClick={handleEdit}>Edit</Button>
                       <Button
+                        variant="contained"
                         data-testid="Delete"
                         onClick={() => handleDelete(book.title)}
                       >

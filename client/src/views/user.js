@@ -107,7 +107,7 @@ const User = () => {
                   </Typography>
                 </TableCell>
                 <TableCell align="left">
-                  <Typography component="h1" variant="h5">
+                  <Typography component="h1" variant="h5 contained">
                     Order
                   </Typography>
                 </TableCell>
