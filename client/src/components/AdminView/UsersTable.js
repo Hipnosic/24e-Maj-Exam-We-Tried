@@ -170,6 +170,8 @@ const UsersTable = () => {
                   <TableCell align="left">1</TableCell>
                   <TableCell align="left">
                     <Button
+                      variant="contained"
+                      sx={{m: 2}}
                       disabled={user.username === userData.name}
                       onClick={() => handlePromote(user.username)}
                       data-testid="promoteButton"
@@ -177,6 +179,7 @@ const UsersTable = () => {
                       Promote
                     </Button>
                     <Button
+                      variant="contained"
                       disabled={user.username === userData.name}
                       onClick={() => handleDelete(user.username)}
                       data-testid="deleteButton"
