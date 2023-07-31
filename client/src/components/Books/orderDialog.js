@@ -26,11 +26,9 @@ export default function FormDialog() {
 
   return (
     <div>
-      <PrimaryButton
-        title={"Order"}
-        variant="outlined"
-        onClick={handleClickOpen}
-      />
+      <PrimaryButton variant="outlined" onClick={handleClickOpen}>
+        Order
+      </PrimaryButton>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Order Product</DialogTitle>
         <DialogContent>

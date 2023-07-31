@@ -1,26 +1,35 @@
 import React, { useState } from "react";
 import { Button, ButtonGroup } from "@mui/material";
-import FormDialog from "./orderDialog"
+import FormDialog from "./orderDialog";
+import PrimaryButton from "../PrimaryButton/PrimaryButton";
 
 const GroupedButtons = () => {
   const [counter, setCounter] = useState(0);
 
   const handleDecrement = () => {
-    setCounter((prevCounter) => prevCounter - 1);
+    if (counter > 0) {
+      setCounter((prevCounter) => prevCounter - 1);
+    }
   };
 
   const handleIncrement = () => {
     setCounter((prevCounter) => prevCounter + 1);
   };
 
-  const displayCounter = counter > 0;
-
   return (
     <>
-      <ButtonGroup size="small" aria-label="small outlined button group">
-        {displayCounter && <Button variant="contained" onClick={handleDecrement}>-</Button>}
-        {displayCounter && <Button disabled>{counter}</Button>}
-        <Button variant="contained" onClick={handleIncrement}>+</Button>
+      <ButtonGroup
+        sx={{ mb: 1 }}
+        size="small"
+        aria-label="small outlined button group"
+      >
+        <PrimaryButton variant="contained" onClick={handleDecrement}>
+          -
+        </PrimaryButton>
+        <Button disabled>{counter}</Button>
+        <PrimaryButton variant="contained" onClick={handleIncrement}>
+          +
+        </PrimaryButton>
       </ButtonGroup>
       <FormDialog className="formDialog"></FormDialog>
     </>
